@@ -1,3 +1,4 @@
+import "../../public-css/root.css"
 import "./landingpage.css";
 
 const Landingpage = () => {

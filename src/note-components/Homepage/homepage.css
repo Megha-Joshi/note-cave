@@ -1,107 +1,103 @@
-.main-section{
+.main-section {
     display: flex;
-    /* margin: 1rem; */
 }
 
-.left-section{
+.left-section {
     width: 20%;
     box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.1);
 }
 
-.list{
+.list {
     display: flex;
     gap: 1rem;
     margin: 1.5rem 4rem;
     font-weight: 600;
-    padding: 10px 20px;
+    padding: 0.625rem 1.25rem;
 }
 
-.left-icon:hover{
-    background-color: #F59794;
+.left-icon:hover {
+    background-color: #f5cecc;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.right-section{
+.right-section {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     width: 70%;
-    margin: 5rem 12rem ;
+    margin: 5rem 12rem;
 }
 
-.note-con{
+.note-con {
     display: flex;
     background-color: var(--box-color);
     width: 50%;
     flex-direction: column;
     gap: 10px;
-    padding: 15px;
+    padding: 0.938rem;
     border-radius: 10px;
 }
 
-/* ::placeholder{
-    color: #990033
-} */
 
-.note-header{
+.note-header {
     display: flex;
     justify-content: space-between;
     width: 90%;
-    margin: 20px;
-    gap: 20px;
+    margin: 1.25rem;
+    gap: 1.25rem;
 }
 
-.note-area{
+.note-area {
     background-color: transparent;
     width: 100%;
-    height: 50px;
+    height: 3.125rem;
     font-size: large;
 }
 
-.note-area:focus{
+.note-area:focus {
     outline: none;
 }
 
-.note-footer{
+.note-footer {
     display: flex;
     gap: 1rem;
     justify-content: center;
     align-items: center;
 }
 
-.footer-text{
+.footer-text {
     font-weight: 600;
 }
 
-.date{
+.date {
     padding: 5px;
     border-radius: 5px;
     background-color: transparent;
-    border: 1px solid #990033;
+    border: 1px solid var(--dark-red);
 }
 
-.footer-icons{
+.footer-icons {
     display: flex;
     margin-left: auto;
-    gap: 20px;
+    gap: 1.25rem;
 }
 
-.inp-title{
+.inp-title {
     background-color: transparent;
     width: 50%;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
 }
 
-.inp-title:focus{
+.inp-title:focus {
     outline: none;
 }
 
-.text-color{
-    color: #990033;
+.text-color {
+    color: var(--dark-red);
 }
 
-.far{
+.far {
     cursor: pointer;
 }
