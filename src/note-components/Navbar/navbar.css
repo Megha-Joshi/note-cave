@@ -1,0 +1,32 @@
+.navbar-section{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
+}
+
+.nav-heading{
+    font-weight: 600;
+}
+
+.btn-primary-login{
+    background-color: #990033;
+}
+
+.btn-primary-login:hover{
+    background-color: #630222;
+}
+
+.search-box {
+    width: 18rem;
+    height: 3rem;
+    border: 1px solid #990033;
+    border-radius: 1.8rem;
+    padding: 10px;
+    margin: 0rem 2rem 0rem 5rem;
+}
+
+.search-box:focus {
+    outline: 1px solid #990033;
+}

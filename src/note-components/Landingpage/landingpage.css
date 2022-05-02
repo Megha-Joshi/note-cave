@@ -1,0 +1,65 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+.main-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.left-container{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 2rem;
+}
+
+.heading{
+    color: #990033;
+    margin: 21px;
+    font-size: 70px;
+    font-weight: 500;
+}
+
+.para-content{
+    margin: 25px;
+    font-weight: 600;
+    line-height: 2rem;
+}
+
+.btn-primary-login{
+    background-color: #990033;
+}
+
+.btn-primary-login:hover{
+    background-color: #630222;
+}
+
+.btn-secondary-login{
+    background-color: transparent;
+    color: #990033;
+    font-size: medium;
+}
+
+.btn-secondary-login:hover{
+    text-decoration: underline;
+}
+
+.btn{
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.right-container{
+    width: 50%;
+}
+
+.home-img{
+    width: 600px;
+}
+
+
+
+
+

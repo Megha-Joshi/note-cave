@@ -1,0 +1,107 @@
+.main-section{
+    display: flex;
+    /* margin: 1rem; */
+}
+
+.left-section{
+    width: 20%;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.1);
+}
+
+.list{
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem 4rem;
+    font-weight: 600;
+    padding: 10px 20px;
+}
+
+.left-icon:hover{
+    background-color: #F59794;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.right-section{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 70%;
+    margin: 5rem 12rem ;
+}
+
+.note-con{
+    display: flex;
+    background-color: var(--box-color);
+    width: 50%;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* ::placeholder{
+    color: #990033
+} */
+
+.note-header{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 20px;
+    gap: 20px;
+}
+
+.note-area{
+    background-color: transparent;
+    width: 100%;
+    height: 50px;
+    font-size: large;
+}
+
+.note-area:focus{
+    outline: none;
+}
+
+.note-footer{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-text{
+    font-weight: 600;
+}
+
+.date{
+    padding: 5px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid #990033;
+}
+
+.footer-icons{
+    display: flex;
+    margin-left: auto;
+    gap: 20px;
+}
+
+.inp-title{
+    background-color: transparent;
+    width: 50%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.inp-title:focus{
+    outline: none;
+}
+
+.text-color{
+    color: #990033;
+}
+
+.far{
+    cursor: pointer;
+}
