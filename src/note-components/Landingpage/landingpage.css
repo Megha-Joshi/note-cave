@@ -1,0 +1,57 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.left-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 2rem;
+}
+
+.heading {
+    color: var(--dark-red);
+    margin: 1.313rem;
+    font-size: 4.375rem;
+    font-weight: 500;
+}
+
+.para-content {
+    margin: 1.563rem;
+    font-weight: 600;
+    line-height: 2rem;
+}
+
+.btn-primary-login {
+    background-color: var(--dark-red);
+}
+
+.btn-primary-login:hover {
+    background-color: var(--hover-red);
+}
+
+.btn-secondary-login {
+    background-color: transparent;
+    color: var(--dark-red);
+    font-size: medium;
+}
+
+.btn-secondary-login:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.right-container {
+    width: 50%;
+}
+
+.home-img {
+    width: 37.5rem;
+}
