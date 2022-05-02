@@ -7,7 +7,7 @@ import { Homepage } from "./note-components/Homepage/homepage";
 function App() {
   return (
     <div className="App">
-      <Landingpage />
+      <Homepage />
     </div>
   );
 }
