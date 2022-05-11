@@ -2,8 +2,49 @@ import "../../public-css/root.css";
 import "./homepage.css";
 import { Navbar } from "../Navbar/navbar";
 import { Sidebar } from "../Sidebar/sidebar";
+import { useNote } from "../../Context/note-context";
+import { useAuth } from "../../Context/auth-context";
+import { createNote } from "../../note-API/create-note";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Homepage = () => {
+const {noteState, noteDispatch} = useNote();
+const {note} = noteState;
+const {authState} = useAuth();
+const { token } = authState;
+const [notes, setNote] = useState({ title: "", mainContent: "" });
+const navigate = useNavigate();
+
+const createNoteFunction = async () => {
+if (token) {
+createNote(notes, token, noteDispatch);
+console.log("created")
+setNote({ title: "", mainContent: "" });
+} else {
+navigate("/login");
+}
+};
+
+const trashNoteFunction = async (item) => {
+try{
+const response = await axios({
+method: "DELETE",
+url: `/api/notes/${item._id}`,
+headers: {authorization : token}
+});
+if(response.status === 200 || response.status === 201){
+noteDispatch({
+type: "DELETE_NOTE",
+payload: {note: response.data.notes, trash: item},
+});
+}
+}catch(error){
+console.log(error);
+}
+}
+
 return (
 <div className="App">
   <Navbar />
@@ -13,37 +54,40 @@ return (
     <div className="right-section">
       <div className="note-con">
         <div className="note-header">
-          <textarea type="text" placeholder="Start Writing your note ..." className="note-area text-color"></textarea>
+          <input type="text" name="search" placeholder="Title of the note ..." value={notes.title}
+            className="inp-title text-color" onChange={(e)=> setNote(() => ({ ...notes, title: e.target.value }))}/>
           <span><i class="far fa-thumbtack"></i></span>
         </div>
+        <textarea type="text" placeholder="Start Writing your note ..." value={notes.mainContent}
+          className="note-area text-color"
+          onChange={(e)=> setNote(() => ({...notes, mainContent: e.target.value}))}></textarea>
         <div className="note-footer">
-          <label className="footer-text text-color">Created on </label>
-          <input type="date" className="date" />
           <div className="footer-icons">
+            <button onClick={createNoteFunction} className="icon-no-bg"><i class="far fa-plus"></i></button>
             <span><i class="far fa-palette"></i></span>
             <span><i class="far fa-tag"></i></span>
             <span><i class="far fa-archive"></i></span>
-            <span><i class="far fa-trash"></i></span>
           </div>
         </div>
       </div>
-      <div className="note-con">
+
+      {note.map((notes) =>
+      <div className="note-list">
         <div className="note-header">
-          <input type="text" name="search" placeholder="Title of the note ..." className="inp-title text-color" />
-          <span><i class="far fa-thumbtack"></i></span>
+          <h2 className="inp-title color">{notes.title}</h2>
+          <span><i class="far fa-thumbtack color"></i></span>
         </div>
-        <textarea type="text" placeholder="Start Writing your note ..." className="note-area text-color"></textarea>
+        <p className="new-note-area note-area color">{notes.mainContent}</p>
         <div className="note-footer">
-          <label className="footer-text text-color">Created on </label>
-          <input type="date" className="date" />
           <div className="footer-icons">
-            <span><i class="far fa-palette"></i></span>
-            <span><i class="far fa-tag"></i></span>
-            <span><i class="far fa-archive"></i></span>
-            <span><i class="far fa-trash"></i></span>
+            <button className="icon-no-bg"><i class="far fa-archive color"></i></button>
+            <button onClick={()=> trashNoteFunction(notes)} className="icon-no-bg"><i
+                class="far fa-trash color"></i></button>
           </div>
         </div>
       </div>
+      )}
+
 
     </div>
   </div>

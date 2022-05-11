@@ -16,7 +16,8 @@
 }
 
 .left-icon:hover {
-    background-color: #f5cecc;
+    color: var(--bg-color);
+    background-color: var(--hover-red);
     border-radius: 5px;
     cursor: pointer;
 }
@@ -24,6 +25,8 @@
 .right-section {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 1.5rem;
     width: 70%;
     margin: 5rem 12rem;
@@ -31,7 +34,7 @@
 
 .note-con {
     display: flex;
-    background-color: var(--box-color);
+    background-color: rgb(227, 171, 171);
     width: 50%;
     flex-direction: column;
     gap: 10px;
@@ -39,6 +42,14 @@
     border-radius: 10px;
 }
 
+.note-list {
+    display: flex;
+    background-color: #8d2f4e;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0.938rem;
+    border-radius: 10px;
+}
 
 .note-header {
     display: flex;
@@ -59,6 +70,10 @@
     outline: none;
 }
 
+.new-note-area{
+    padding-left: 0px;
+}
+
 .note-footer {
     display: flex;
     gap: 1rem;
@@ -74,7 +89,7 @@
     padding: 5px;
     border-radius: 5px;
     background-color: transparent;
-    border: 1px solid var(--dark-red);
+    border: 1px solid #1D3B00;
 }
 
 .footer-icons {
@@ -94,10 +109,25 @@
     outline: none;
 }
 
-.text-color {
-    color: var(--dark-red);
+.icon-color {
+    color: var(--hover-red);
 }
 
+.text-color{
+    color: var(--font-color);
+}
+
+.color{
+    color: rgb(227, 171, 171);  
+}
+
+::placeholder{
+    color: #975369;
+}
 .far {
     cursor: pointer;
+}
+
+.icon-no-bg {
+    background-color: transparent;
 }
