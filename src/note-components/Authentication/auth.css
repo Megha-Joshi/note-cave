@@ -1,0 +1,83 @@
+/* Login.css */
+
+.check-pass {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Login-signup.css */
+
+.login-container {
+    display: flex;
+    width: 100%;
+    height: 80vh;
+}
+
+.check-pass {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-container {
+    width: 25%;
+    height: 65%;
+}
+
+.input-box {
+    width: 100%;
+    margin: 0.625rem 0rem;
+}
+
+.long-btn {
+    width: 100%;
+    margin: 1.25rem 0rem;
+}
+
+.btn-no-bg {
+    background-color: transparent;
+    color: var(--accent-color);
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 900;
+}
+
+.btn-no-bg:hover {
+    color: var(--accent-hover);
+}
+
+.new-ac {
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.login-head {
+    margin: 0.625rem 1.25rem 1.25rem 1.25rem;
+    text-align: center;
+}
+
+/* root.css */
+
+.btn-no-bg {
+    background-color: transparent;
+    color: var(--accent-color);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.btn-no-bg:hover {
+    color: var(--accent-hover);
+}
+
+.justify-align {
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-no-bg-color {
+    color: var(--accent-color);
+}
+
+.btn-no-bg-color:active {
+    color: var(--accent-hover);
+}
