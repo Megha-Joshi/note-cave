@@ -1,5 +1,6 @@
 import "../../public-css/root.css"
 import "./landingpage.css";
+import { Link } from "react-router-dom";
 
 const Landingpage = () => {
 return (
@@ -12,8 +13,12 @@ return (
                 <p className="para-content title title-content">Note Cave offers
                     you the easiest way to create notes and to-do lists, capture ideas, and more. </p>
                 <div>
+                    <Link to="/signup">
                     <button className="btn btn-primary-login btn-text">JOIN NOW</button>
+                    </Link>
+                    <Link to="/login">
                     <button className="btn btn-secondary-login">Already have an account?</button>
+                    </Link>
                 </div>
             </section>
         </div>
