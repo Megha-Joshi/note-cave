@@ -124,7 +124,7 @@
 ::placeholder{
     color: #975369;
 }
-.far {
+.far, .fad{
     cursor: pointer;
 }
 

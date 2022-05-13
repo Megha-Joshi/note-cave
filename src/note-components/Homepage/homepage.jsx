@@ -27,7 +27,7 @@ navigate("/login");
 }
 };
 
-const trashNoteFunction = async (item) => {
+const addToTrash = async (item) => {
 try{
 const response = await axios({
 method: "DELETE",
@@ -44,6 +44,25 @@ payload: {note: response.data.notes, trash: item},
 console.log(error);
 }
 }
+
+const addToArchive = async(item) => {
+  try{
+  const response = await axios({
+  method: "POST",
+  url: `/api/notes/archives/${item._id}`,
+  headers: {authorization : token},
+  data: {note: item},
+  });
+  if(response.status === 200 || response.status === 201){
+  noteDispatch({
+  type: "ADD_TO_ARCHIVE",
+  payload: {note: response.data.notes, archive: response.data.archives}
+  });
+  }
+  }catch(error){
+  console.log(error);
+  }
+  }
 
 return (
 <div className="App">
@@ -66,7 +85,6 @@ return (
             <button onClick={createNoteFunction} className="icon-no-bg"><i class="far fa-plus"></i></button>
             <span><i class="far fa-palette"></i></span>
             <span><i class="far fa-tag"></i></span>
-            <span><i class="far fa-archive"></i></span>
           </div>
         </div>
       </div>
@@ -80,8 +98,9 @@ return (
         <p className="new-note-area note-area color">{notes.mainContent}</p>
         <div className="note-footer">
           <div className="footer-icons">
-            <button className="icon-no-bg"><i class="far fa-archive color"></i></button>
-            <button onClick={()=> trashNoteFunction(notes)} className="icon-no-bg"><i
+            <span><i class="fad fa-edit color"></i></span>
+            <button onClick ={()=> addToArchive(notes)}className="icon-no-bg"><i class="fad fa-inbox-in color"></i></button>
+            <button onClick={()=> addToTrash(notes)} className="icon-no-bg"><i
                 class="far fa-trash color"></i></button>
           </div>
         </div>
