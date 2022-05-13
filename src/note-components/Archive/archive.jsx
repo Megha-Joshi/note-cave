@@ -54,11 +54,11 @@ return (
   <div className="main-section">
     <Sidebar />
     <div className="right-section">
+      <h2 className="page-heading">Archive</h2>
       {archive.map((item) =>
       <div className="note-list">
         <div className="note-header">
           <h2 className="inp-title color">{item.title}</h2>
-          <span><i class="far fa-thumbtack color"></i></span>
         </div>
         <p className="new-note-area note-area color">{item.mainContent}</p>
         <div className="note-footer">
