@@ -22,7 +22,7 @@ return (
         <p className="new-note-area note-area color">{item.mainContent}</p>
         <div className="note-footer">
           <div className="footer-icons">
-            <span><i class="far fa-archive color"></i></span>
+            <span><i class="fad fa-inbox-in color"></i></span>
             <span><i class="far fa-trash color"></i></span>
           </div>
         </div>

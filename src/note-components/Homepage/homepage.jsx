@@ -85,7 +85,6 @@ return (
             <button onClick={createNoteFunction} className="icon-no-bg"><i class="far fa-plus"></i></button>
             <span><i class="far fa-palette"></i></span>
             <span><i class="far fa-tag"></i></span>
-            <span><i class="far fa-archive"></i></span>
           </div>
         </div>
       </div>
@@ -99,7 +98,8 @@ return (
         <p className="new-note-area note-area color">{notes.mainContent}</p>
         <div className="note-footer">
           <div className="footer-icons">
-            <button onClick ={()=> addToArchive(notes)}className="icon-no-bg"><i class="far fa-archive color"></i></button>
+            <span><i class="fad fa-edit color"></i></span>
+            <button onClick ={()=> addToArchive(notes)}className="icon-no-bg"><i class="fad fa-inbox-in color"></i></button>
             <button onClick={()=> addToTrash(notes)} className="icon-no-bg"><i
                 class="far fa-trash color"></i></button>
           </div>

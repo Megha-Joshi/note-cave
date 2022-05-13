@@ -20,6 +20,12 @@ const noteReducerFun = (noteState,{ type, payload }) => {
           ...noteState,
           archive: payload.archive,
           trash: [...noteState.trash, { ...payload.trash }] };
+        case "RESTORE_NOTE_FROM_ARCHIVE":
+          return{
+            ...noteState,
+            note: payload.note,
+            archive: payload.archive
+          }
       default:
         return noteState;
     }

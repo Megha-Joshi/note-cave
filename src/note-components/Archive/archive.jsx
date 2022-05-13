@@ -5,6 +5,7 @@ import { Sidebar } from "../Sidebar/sidebar";
 import { useNote } from "../../Context/note-context";
 import { useAuth } from "../../Context/auth-context";
 import axios from "axios";
+import { restoreFromArchivesHandler } from "../../backend/controllers/ArchiveController";
 
 const Archive = () => {
 const { noteState, noteDispatch } = useNote();
@@ -29,6 +30,24 @@ const addToTrashFromArchive = async (item) => {
   console.log(error);
   }
   }
+
+const restoreFromArchive = async (item) =>{
+  try{
+    const response = await axios({
+      method: "POST",
+      url: `/api/archives/restore/${item._id}`,
+      headers: {authorization : token}
+    });
+    if(response.status === 200 || response.status === 201){
+      noteDispatch({
+        type: "RESTORE_NOTE_FROM_ARCHIVE",
+        payload: {note: response.data.notes, archive: response.data.archives}
+      });
+    }
+  }catch(error){
+    console.log(error);
+  }
+}
 return (
 <div className="App">
   <Navbar />
@@ -44,7 +63,7 @@ return (
         <p className="new-note-area note-area color">{item.mainContent}</p>
         <div className="note-footer">
           <div className="footer-icons">
-            <span><i class="far fa-archive color"></i></span>
+            <button onClick={()=> restoreFromArchive(item)} className="icon-no-bg"><i class="fad fa-inbox-out color"></i></button>
             <button onClick={()=> addToTrashFromArchive(item)} className="icon-no-bg"><i
                 class="far fa-trash color"></i></button>
           </div>
