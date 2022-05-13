@@ -27,7 +27,7 @@ navigate("/login");
 }
 };
 
-const trashNoteFunction = async (item) => {
+const addToTrash = async (item) => {
 try{
 const response = await axios({
 method: "DELETE",
@@ -100,7 +100,7 @@ return (
         <div className="note-footer">
           <div className="footer-icons">
             <button onClick ={()=> addToArchive(notes)}className="icon-no-bg"><i class="far fa-archive color"></i></button>
-            <button onClick={()=> trashNoteFunction(notes)} className="icon-no-bg"><i
+            <button onClick={()=> addToTrash(notes)} className="icon-no-bg"><i
                 class="far fa-trash color"></i></button>
           </div>
         </div>
