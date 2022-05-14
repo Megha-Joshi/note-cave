@@ -10,8 +10,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Homepage = () => {
-const {noteState, noteDispatch, notes, setNote} = useNote();
-const {note} = noteState;
+const {noteState, noteDispatch, notes, setNote, tagItem} = useNote();
+const {note, tag} = noteState;
 const {authState} = useAuth();
 const { token } = authState;
 const navigate = useNavigate();
@@ -20,7 +20,7 @@ const createNoteFunction = async () => {
 if (token) {
 createNote(notes, token, noteDispatch);
 console.log("created")
-setNote({ title: "", mainContent: "" , bgColor: ""});
+setNote({ title: "", mainContent: "" , bgColor: "" , tags: ""});
 } else {
 navigate("/login");
 }
@@ -80,6 +80,11 @@ return (
           className="note-area text-color"
           onChange={(e)=> setNote(() => ({...notes, mainContent: e.target.value}))}></textarea>
         <div className="note-footer">
+            <select name="tags" onClick={(e) => setNote(() => ({...notes, tags: e.target.value}))}>
+            {tagItem.map((tagItemName) =>
+            <option value={tagItemName}>{tagItemName}</option>
+            )}
+           </select>
           <div className="footer-icons">
             <button onClick={createNoteFunction} className="icon-no-bg"><i class="far fa-plus"></i></button>
             <input type="color" value={notes.bgColor} onChange={(e) => setNote(()=> ({...notes, bgColor: e.target.value}))}/>
@@ -95,6 +100,7 @@ return (
           <span><i class="far fa-thumbtack color"></i></span>
         </div>
         <p className="new-note-area note-area color">{notes.mainContent}</p>
+        <span>{notes.tags}</span>
         <div className="note-footer">
           <div className="footer-icons">
             <button className="icon-no-bg"><i class="fad fa-edit color"></i></button>

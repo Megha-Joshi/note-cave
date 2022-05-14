@@ -32,11 +32,12 @@ const noteReducerFun = (noteState,{ type, payload }) => {
   };
 
 const NoteProvider = ({children}) => {
-    const [noteState, noteDispatch] = useReducer(noteReducerFun, {note:[], trash:[], archive: []})
-    const [notes, setNote] = useState({ title: "", mainContent: "", bgColor: ""});
+    const [noteState, noteDispatch] = useReducer(noteReducerFun, {note:[], trash:[], archive: [], tag: []})
+    const [notes, setNote] = useState({ title: "", mainContent: "", bgColor: "", tags: ""});
+    const [tagItem, setTagItem] = useState(["work", "home", "exercise"]);
 
 
-    return(<NoteContext.Provider value={{noteState, noteDispatch, notes, setNote}}>{children}</NoteContext.Provider>);
+    return(<NoteContext.Provider value={{noteState, noteDispatch, notes, setNote, tagItem, setTagItem}}>{children}</NoteContext.Provider>);
 };
 
 const useNote = () => useContext(NoteContext);
