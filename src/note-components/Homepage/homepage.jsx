@@ -10,18 +10,17 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Homepage = () => {
-const {noteState, noteDispatch} = useNote();
+const {noteState, noteDispatch, notes, setNote} = useNote();
 const {note} = noteState;
 const {authState} = useAuth();
 const { token } = authState;
-const [notes, setNote] = useState({ title: "", mainContent: "" });
 const navigate = useNavigate();
 
 const createNoteFunction = async () => {
 if (token) {
 createNote(notes, token, noteDispatch);
 console.log("created")
-setNote({ title: "", mainContent: "" });
+setNote({ title: "", mainContent: "" , bgColor: ""});
 } else {
 navigate("/login");
 }
@@ -71,7 +70,7 @@ return (
     <Sidebar />
 
     <div className="right-section">
-      <div className="note-con">
+      <div className="note-con" style={{backgroundColor: notes.bgColor}}>
         <div className="note-header">
           <input type="text" name="search" placeholder="Title of the note ..." value={notes.title}
             className="inp-title text-color" onChange={(e)=> setNote(() => ({ ...notes, title: e.target.value }))}/>
@@ -83,14 +82,14 @@ return (
         <div className="note-footer">
           <div className="footer-icons">
             <button onClick={createNoteFunction} className="icon-no-bg"><i class="far fa-plus"></i></button>
-            <span><i class="far fa-palette"></i></span>
+            <input type="color" value={notes.bgColor} onChange={(e) => setNote(()=> ({...notes, bgColor: e.target.value}))}/>
             <span><i class="far fa-tag"></i></span>
           </div>
         </div>
       </div>
 
       {note.map((notes) =>
-      <div className="note-list">
+      <div className="note-list" style={{backgroundColor: notes.bgColor}}>
         <div className="note-header">
           <h2 className="inp-title color">{notes.title}</h2>
           <span><i class="far fa-thumbtack color"></i></span>
@@ -98,7 +97,7 @@ return (
         <p className="new-note-area note-area color">{notes.mainContent}</p>
         <div className="note-footer">
           <div className="footer-icons">
-            <span><i class="fad fa-edit color"></i></span>
+            <button className="icon-no-bg"><i class="fad fa-edit color"></i></button>
             <button onClick ={()=> addToArchive(notes)}className="icon-no-bg"><i class="fad fa-inbox-in color"></i></button>
             <button onClick={()=> addToTrash(notes)} className="icon-no-bg"><i
                 class="far fa-trash color"></i></button>

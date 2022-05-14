@@ -131,3 +131,9 @@
 .icon-no-bg {
     background-color: transparent;
 }
+
+input[type="color"] {
+    width:20px;
+    height:20px;
+    border-radius: 50%
+}
