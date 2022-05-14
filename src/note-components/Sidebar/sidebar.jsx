@@ -10,10 +10,12 @@ return (
         <p>Home</p>
     </div>
     </Link>
+    <Link to="/label">
     <div className="list left-icon text-color">
         <span><i class="far fa-tag icon-color"></i></span>
         <p>Label</p>
     </div>
+    </Link>
     <Link to="/archive" className="text-color">
     <div className="list left-icon">
         <span><i class="far fa-archive icon-color"></i></span>

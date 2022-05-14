@@ -8,6 +8,7 @@ import { Signup } from "./note-components/Authentication/signup";
 import { Route, Routes} from "react-router-dom";
 import { Trash } from "./note-components/Trash/trash";
 import { Archive } from "./note-components/Archive/archive";
+import { Label } from "./note-components/Label/label";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/trash" element={<Trash />} />
         <Route path="/archive" element={<Archive />}/>
+        <Route path="/label" element={<Label />}/>
       </Routes>
     </div>
   );
