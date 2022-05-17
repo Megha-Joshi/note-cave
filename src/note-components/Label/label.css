@@ -1,19 +1,19 @@
 .chips-container {
-    height: 220px;
+    height: 13.75rem;
     border: 1px solid rgba(0, 0, 0, .2);
-    color: #0000008a;
-    margin: 20px;
+    color: var(--font-color);
+    margin: 1.25rem;
 }
 
 
 .container-one {
     display: flex;
     background-color: #0000000a;
-    flex: 0 0 90px;
+    flex: 0 0 5.625rem;
     height: 100px;
     flex-direction: column;
-    border-bottom: 1px solid black;
-    margin: 20px 30px 30px 30px;
+    border-bottom: 1px solid var(--font-color);
+    margin: 1.25rem 1.875rem 1.875rem 1.875rem;
 
 }
 
@@ -23,7 +23,7 @@
 
 .items {
     display: flex;
-    gap: 20px;
+    gap: 1.25rem;
     align-items: center;
     margin-bottom: 10px;
 }
@@ -32,15 +32,15 @@
 .chips-btn {
     display: flex;
     gap: 5px;
-    flex: 0 0 30px;
+    flex: 0 0 1.875rem;
     height: 25px;
     align-items: center;
     justify-content: center;
-    background-color: #e0e0e0;
+    background-color: var(--box-color);
     border-radius: 10px;
     margin-left: 10px;
     padding: 5px 8px 5px 8px;
-    color: black;
+    color: var(--font-color);
     font-weight: 500;
 }
 
