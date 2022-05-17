@@ -26,6 +26,11 @@ const noteReducerFun = (noteState,{ type, payload }) => {
             note: payload.note,
             archive: payload.archive
           }
+        case "DELETE_FROM_TRASH":
+          return{
+            ...noteState,
+            trash: noteState.trash.filter((item) => item._id !== payload)
+          }
       default:
         return noteState;
     }

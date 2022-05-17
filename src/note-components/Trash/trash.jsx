@@ -5,7 +5,7 @@ import { Sidebar } from "../Sidebar/sidebar";
 import { useNote } from "../../Context/note-context";
 
 const Trash = () => {
-const { noteState } = useNote();
+const { noteState, noteDispatch } = useNote();
 const { trash } = noteState;
 return (
 <div className="App">
@@ -23,7 +23,7 @@ return (
         <div className="note-footer">
           <div className="footer-icons">
             <span><i class="fad fa-inbox-in color"></i></span>
-            <span><i class="far fa-trash color"></i></span>
+            <button className="icon-no-bg" onClick={(e) => noteDispatch({type:"DELETE_FROM_TRASH", payload: item._id})}><i class="far fa-trash color"></i></button>
           </div>
         </div>
       </div>
