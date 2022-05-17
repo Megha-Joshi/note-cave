@@ -20,11 +20,11 @@ const noteReducerFun = (noteState,{ type, payload }) => {
           ...noteState,
           archive: payload.archive,
           trash: [...noteState.trash, { ...payload.trash }] };
-        case "RESTORE_NOTE_FROM_ARCHIVE":
-          return{
-            ...noteState,
-            note: payload.note,
-            archive: payload.archive
+      case "RESTORE_NOTE_FROM_ARCHIVE":
+        return{
+          ...noteState,
+          note: payload.note,
+          archive: payload.archive
           }
       default:
         return noteState;
@@ -32,8 +32,14 @@ const noteReducerFun = (noteState,{ type, payload }) => {
   };
 
 const NoteProvider = ({children}) => {
-    const [noteState, noteDispatch] = useReducer(noteReducerFun, {note:[], trash:[], archive: [], tag: []})
-    const [notes, setNote] = useState({ title: "", mainContent: "", bgColor: "", tags: ""});
+    const [noteState, noteDispatch] = useReducer(noteReducerFun, {
+      note:[], 
+      trash:[], 
+      archive: [], 
+      tag: [], 
+      priority: ["critical", "high", "medium", "low"],
+    });
+    const [notes, setNote] = useState({ title: "", mainContent: "", bgColor: "", tags: "", priorityPlace: ""});
     const [tagItem, setTagItem] = useState(["work", "home", "exercise"]);
 
 

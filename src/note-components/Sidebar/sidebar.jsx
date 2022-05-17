@@ -1,5 +1,6 @@
 import "../Homepage/homepage.css"
 import { Link } from "react-router-dom";
+import { Filter } from "../Filter/filter";
 
 const Sidebar = () => {
 return (
@@ -29,8 +30,8 @@ return (
     </div>
     </Link>
     <div className="list left-icon text-color">
-        <span><i class="far fa-user-circle icon-color"></i></span>
-        <p>Profile</p>
+        <span><i class="far fa-filter icon-color"></i></span>
+        <button><Filter /></button>
     </div>
 </div>
 );

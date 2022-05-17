@@ -5,22 +5,24 @@ import { Sidebar } from "../Sidebar/sidebar";
 import { useNote } from "../../Context/note-context";
 import { useAuth } from "../../Context/auth-context";
 import { createNote } from "../../note-API/create-note";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useFilter } from "../../Context/filter-context";
 
 const Homepage = () => {
 const {noteState, noteDispatch, notes, setNote, tagItem} = useNote();
-const {note, tag} = noteState;
+const {note, priority} = noteState;
 const {authState} = useAuth();
 const { token } = authState;
 const navigate = useNavigate();
+const { filterState, finalFilter} = useFilter();
+
 
 const createNoteFunction = async () => {
 if (token) {
 createNote(notes, token, noteDispatch);
 console.log("created")
-setNote({ title: "", mainContent: "" , bgColor: "" , tags: ""});
+setNote({ title: "", mainContent: "" , bgColor: "" , tags: "", priorityPlace: ""});
 } else {
 navigate("/login");
 }
@@ -45,23 +47,24 @@ console.log(error);
 }
 
 const addToArchive = async(item) => {
-  try{
-  const response = await axios({
-  method: "POST",
-  url: `/api/notes/archives/${item._id}`,
-  headers: {authorization : token},
-  data: {note: item},
-  });
-  if(response.status === 200 || response.status === 201){
-  noteDispatch({
-  type: "ADD_TO_ARCHIVE",
-  payload: {note: response.data.notes, archive: response.data.archives}
-  });
-  }
-  }catch(error){
-  console.log(error);
-  }
-  }
+try{
+const response = await axios({
+method: "POST",
+url: `/api/notes/archives/${item._id}`,
+headers: {authorization : token},
+data: {note: item},
+});
+if(response.status === 200 || response.status === 201){
+noteDispatch({
+type: "ADD_TO_ARCHIVE",
+payload: {note: response.data.notes, archive: response.data.archives}
+});
+}
+}catch(error){
+console.log(error);
+}
+}
+
 
 return (
 <div className="App">
@@ -80,20 +83,28 @@ return (
           className="note-area text-color"
           onChange={(e)=> setNote(() => ({...notes, mainContent: e.target.value}))}></textarea>
         <div className="note-footer">
-            <select name="tags" onClick={(e) => setNote(() => ({...notes, tags: e.target.value}))}>
+          <select name="tags" onClick={(e)=> setNote(() => ({...notes, tags: e.target.value}))}>
+            <option selected disabled>Tags</option>
             {tagItem.map((tagItemName) =>
             <option value={tagItemName}>{tagItemName}</option>
             )}
-           </select>
+          </select>
+          <select name="priority" onClick={(e)=> setNote(() => ({...notes, priorityPlace: e.target.value}))}>
+            <option selected disabled>Priority</option>
+            {priority.map((priorityName) =>
+            <option value={priorityName}>{priorityName}</option>
+            )}
+          </select>
           <div className="footer-icons">
             <button onClick={createNoteFunction} className="icon-no-bg"><i class="far fa-plus"></i></button>
-            <input type="color" value={notes.bgColor} onChange={(e) => setNote(()=> ({...notes, bgColor: e.target.value}))}/>
+            <input type="color" value={notes.bgColor} onChange={(e)=> setNote(()=> ({...notes, bgColor:
+            e.target.value}))}/>
             <span><i class="far fa-tag"></i></span>
           </div>
         </div>
       </div>
 
-      {note.map((notes) =>
+      {finalFilter(note, filterState).map((notes) =>
       <div className="note-list" style={{backgroundColor: notes.bgColor}}>
         <div className="note-header">
           <h2 className="inp-title color">{notes.title}</h2>
@@ -101,12 +112,13 @@ return (
         </div>
         <p className="new-note-area note-area color">{notes.mainContent}</p>
         <span>{notes.tags}</span>
+        <span>{notes.priorityPlace}</span>
         <div className="note-footer">
           <div className="footer-icons">
             <button className="icon-no-bg"><i class="fad fa-edit color"></i></button>
-            <button onClick ={()=> addToArchive(notes)}className="icon-no-bg"><i class="fad fa-inbox-in color"></i></button>
-            <button onClick={()=> addToTrash(notes)} className="icon-no-bg"><i
-                class="far fa-trash color"></i></button>
+            <button onClick={()=> addToArchive(notes)}className="icon-no-bg"><i
+                class="fad fa-inbox-in color"></i></button>
+            <button onClick={()=> addToTrash(notes)} className="icon-no-bg"><i class="far fa-trash color"></i></button>
           </div>
         </div>
       </div>
