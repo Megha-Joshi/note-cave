@@ -1,8 +1,10 @@
-.chips-container {
+/* .chips-container {
     height: 13.75rem;
     border: 1px solid rgba(0, 0, 0, .2);
     color: var(--font-color);
     margin: 1.25rem;
+    width: 100%;
+
 }
 
 
@@ -14,6 +16,11 @@
     flex-direction: column;
     border-bottom: 1px solid var(--font-color);
     margin: 1.25rem 1.875rem 1.875rem 1.875rem;
+
+    margin: 0.9375rem;
+    padding: 0px 0px 5px 15px;
+    background-color: rgb(231, 216, 231);
+    border-radius: 5px;
 
 }
 
@@ -56,4 +63,92 @@
     border-radius: 100%;
     text-align: center;
     cursor: pointer;
+} */
+
+.chips-container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--box-color);
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer; 
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.container-one{
+    display: flex;
+    background-color: var(--box-color);
+    flex: 0 0 5.625rem;
+    flex-direction: column;
+    border-bottom: 1px solid var(--font-color);
+    margin: 1.875rem;
+    padding: 0px 0px 5px 15px;
+    border-radius: 5px;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-one:hover {
+    border-bottom: 2px solid black;
+}
+
+.chips-content{
+    padding: 1rem;
+}
+
+.text {
+    padding: 10px;
+    cursor: default;
+}
+
+.items {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.chips-btn {
+    display: flex;
+    gap: 1rem;
+    flex: 0 0 1.875rem;
+    height: 25px;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 1rem;
+    color: var(--font-color);
+    font-weight: 500;
+}
+
+.chips-btn:hover {
+    background-color: lightgrey;
+    cursor: default;
+}
+
+.chips-btn-one {
+    display: flex;
+    gap: 1rem;
+    flex: 0 0 1.875rem;
+    /* height: 25px; */
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 1rem;
+    color: var(--font-color);
+    font-weight: 500;
+}
+
+.chips-inp{
+    border-radius: 5px;
+    padding: 8px;
 }

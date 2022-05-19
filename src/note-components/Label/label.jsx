@@ -27,20 +27,18 @@ return (
             <h2 className="page-heading">Label</h2>
                 <div class="chips-container">
                     <div class="container-one">
+                        <p class="chips-content">Label</p>
                         <div class="items">
-                            <div class="chips-btn">
-                                <ul>
+                                <ul class="chips-btn-one">
                                     {tagItem.map((item,index) => (
-                                    <li class="first">{item}
-                                    <button className="icon-no-bg" onClick={()=> deleteTagFunction(index)}><i class="fad fa-times-circle"></i></button>
+                                    <li class="first chips-btn">{item}
+                                    <span className="icon-no-bg" onClick={()=> deleteTagFunction(index)}><i class="fad fa-times-circle"></i></span>
                                     </li>) 
                                     )}
+                                    <input placeholder="Press enter to add a label" class="chips-inp"onKeyUp={addTagFunction}/>
                                     
                                 </ul>
-                                
-                            </div>
-                            <input placeholder="Enter new label" onKeyUp={addTagFunction}/>
-                        </div>
+                                </div>
                     </div>
                 </div>
         </div>
