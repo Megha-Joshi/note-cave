@@ -44,7 +44,7 @@ const NoteProvider = ({children}) => {
       tag: [], 
       priority: ["critical", "high", "medium", "low"],
     });
-    const [notes, setNote] = useState({ title: "", mainContent: "", bgColor: "", tags: "", priorityPlace: ""});
+    const [notes, setNote] = useState({ title: "", mainContent: "", bgColor: "", tags: "", priorityPlace: "", currentDate: ""})
     const [tagItem, setTagItem] = useState(["work", "home", "exercise"]);
 
 

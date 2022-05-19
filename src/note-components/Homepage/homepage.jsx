@@ -22,7 +22,7 @@ const createNoteFunction = async () => {
 if (token) {
 createNote(notes, token, noteDispatch);
 console.log("created")
-setNote({ title: "", mainContent: "" , bgColor: "" , tags: "", priorityPlace: ""});
+setNote({ title: "", mainContent: "" , bgColor: "" , tags: "", priorityPlace: "", currentDate: ""});
 } else {
 navigate("/login");
 }
@@ -81,7 +81,7 @@ return (
         </div>
         <textarea type="text" placeholder="Start Writing your note ..." value={notes.mainContent}
           className="note-area text-color"
-          onChange={(e)=> setNote(() => ({...notes, mainContent: e.target.value}))}></textarea>
+          onChange={(e)=> setNote(() => ({...notes, mainContent: e.target.value, currentDate: new Date().toLocaleString()}))}></textarea>
         <div className="note-footer">
           <select name="tags" onClick={(e)=> setNote(() => ({...notes, tags: e.target.value}))}>
             <option selected disabled>Tags</option>
@@ -113,6 +113,7 @@ return (
         <p className="new-note-area note-area color">{notes.mainContent}</p>
         <span>{notes.tags}</span>
         <span>{notes.priorityPlace}</span>
+        <span>{notes.currentDate}</span>
         <div className="note-footer">
           <div className="footer-icons">
             <button className="icon-no-bg"><i class="fad fa-edit color"></i></button>
