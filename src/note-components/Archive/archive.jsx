@@ -53,7 +53,7 @@ return (
     <Sidebar />
     <div className="right-section">
       <h2 className="page-heading">Archive</h2>
-      {archive.map((item) =>
+      {/* {archive.map((item) =>
       <div className="note-list">
         <div className="note-header">
           <h2 className="inp-title color">{item.title}</h2>
@@ -68,6 +68,33 @@ return (
           </div>
         </div>
       </div>
+      )} */}
+
+      {archive.map((notes) =>
+        <div className="note-list">
+        <div className="note-header">
+          <h2 className="inp-title color">{notes.title}</h2>
+        </div>
+        <p className="new-note-area note-area color">{notes.mainContent}</p>
+        <div className="note-tag">
+          {notes.tags.length>0 ? <button className="color tag-btn">{notes.tags}</button>:
+          <button className="color">{notes.tags}</button>}
+          {notes.priorityPlace.length>0 ?
+          <button className="color tag-btn">{notes.priorityPlace}</button>:
+          <button className="color">{notes.priorityPlace}</button>
+          }
+        </div>
+        <span className="color"><small className="small-text">{notes.currentDate}</small></span>
+        <div className="note-footer">
+          <div className="footer-icons">
+          <button onClick={()=> restoreFromArchive(notes)} className="icon-no-bg"><i
+                class="fad fa-inbox-out color"></i></button>
+            <button onClick={()=> addToTrashFromArchive(notes)} className="icon-no-bg"><i
+                class="far fa-trash color"></i></button>
+          </div>
+        </div>
+      </div>
+
       )}
     </div>
   </div>

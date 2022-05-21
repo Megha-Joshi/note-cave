@@ -11,17 +11,27 @@ return (
   <div className="main-section">
     <Sidebar />
     <div className="right-section">
-    <h2 className="page-heading">Trash</h2>
-      {trash.map((item) =>
+      <h2 className="page-heading">Trash</h2>
+      {trash.map((notes) =>
       <div className="note-list">
         <div className="note-header">
-          <h2 className="inp-title color">{item.title}</h2>
+          <h2 className="inp-title color">{notes.title}</h2>
         </div>
-        <p className="new-note-area note-area color">{item.mainContent}</p>
+        <p className="new-note-area note-area color">{notes.mainContent}</p>
+        <div className="note-tag">
+          {notes.tags.length>0 ? <button className="color tag-btn">{notes.tags}</button>:
+          <button className="color">{notes.tags}</button>}
+          {notes.priorityPlace.length>0 ?
+          <button className="color tag-btn">{notes.priorityPlace}</button>:
+          <button className="color">{notes.priorityPlace}</button>
+          }
+        </div>
+        <span className="color"><small className="small-text">{notes.currentDate}</small></span>
         <div className="note-footer">
           <div className="footer-icons">
             <span><i class="fad fa-inbox-in color"></i></span>
-            <button className="icon-no-bg" onClick={(e) => noteDispatch({type:"DELETE_FROM_TRASH", payload: item._id})}><i class="far fa-trash color"></i></button>
+            <button className="icon-no-bg" onClick={(e)=> noteDispatch({type:"DELETE_FROM_TRASH", payload:
+              notes._id})}><i class="far fa-trash color"></i></button>
           </div>
         </div>
       </div>
