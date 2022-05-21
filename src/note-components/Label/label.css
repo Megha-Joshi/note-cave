@@ -1,70 +1,3 @@
-/* .chips-container {
-    height: 13.75rem;
-    border: 1px solid rgba(0, 0, 0, .2);
-    color: var(--font-color);
-    margin: 1.25rem;
-    width: 100%;
-
-}
-
-
-.container-one {
-    display: flex;
-    background-color: #0000000a;
-    flex: 0 0 5.625rem;
-    height: 100px;
-    flex-direction: column;
-    border-bottom: 1px solid var(--font-color);
-    margin: 1.25rem 1.875rem 1.875rem 1.875rem;
-
-    margin: 0.9375rem;
-    padding: 0px 0px 5px 15px;
-    background-color: rgb(231, 216, 231);
-    border-radius: 5px;
-
-}
-
-.container-one:hover {
-    border-bottom: 2px solid black;
-}
-
-.items {
-    display: flex;
-    gap: 1.25rem;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-
-.chips-btn {
-    display: flex;
-    gap: 5px;
-    flex: 0 0 1.875rem;
-    height: 25px;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--box-color);
-    border-radius: 10px;
-    margin-left: 10px;
-    padding: 5px 8px 5px 8px;
-    color: var(--font-color);
-    font-weight: 500;
-}
-
-.chips-btn:hover {
-    background-color: lightgrey;
-    cursor: default;
-}
-
-.image {
-    width: 10px;
-    background-color: grey;
-    padding: 5px;
-    border-radius: 100%;
-    text-align: center;
-    cursor: pointer;
-} */
-
 .chips-container{
     display: flex;
     flex-direction: column;
@@ -121,11 +54,11 @@
     height: 25px;
     align-items: center;
     justify-content: center;
-    background-color: red;
+    background-color: #464646;
     border-radius: 10px;
     margin: 10px;
     padding: 1rem;
-    color: var(--font-color);
+    color: var(--bg-color);
     font-weight: 500;
 }
 
@@ -138,7 +71,6 @@
     display: flex;
     gap: 1rem;
     flex: 0 0 1.875rem;
-    /* height: 25px; */
     align-items: center;
     justify-content: center;
     border-radius: 10px;

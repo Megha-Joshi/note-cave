@@ -1,6 +1,5 @@
 import "../../public-css/root.css";
 import "./homepage.css";
-import { Navbar } from "../Navbar/navbar";
 import { Sidebar } from "../Sidebar/sidebar";
 import { useNote } from "../../Context/note-context";
 import { useAuth } from "../../Context/auth-context";
@@ -8,6 +7,7 @@ import { createNote } from "../../note-API/create-note";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useFilter } from "../../Context/filter-context";
+import { Filter } from "../Filter/filter";
 
 const Homepage = () => {
 const {noteState, noteDispatch, notes, setNote, tagItem} = useNote();
@@ -21,7 +21,6 @@ const { filterState, finalFilter} = useFilter();
 const createNoteFunction = async () => {
 if (token) {
 createNote(notes, token, noteDispatch);
-console.log("created")
 setNote({ title: "", mainContent: "" , bgColor: "" , tags: "", priorityPlace: "", currentDate: ""});
 } else {
 navigate("/login");
@@ -65,14 +64,12 @@ console.log(error);
 }
 }
 
-
 return (
 <div className="App">
-  <Navbar />
   <div className="main-section">
     <Sidebar />
 
-    <div className="right-section">
+    <div className="home-right-section">
       <div className="note-con" style={{backgroundColor: notes.bgColor}}>
         <div className="note-header">
           <input type="text" name="search" placeholder="Title of the note ..." value={notes.title}
@@ -83,13 +80,14 @@ return (
           className="note-area text-color"
           onChange={(e)=> setNote(() => ({...notes, mainContent: e.target.value, currentDate: new Date().toLocaleString()}))}></textarea>
         <div className="note-footer">
-          <select name="tags" onClick={(e)=> setNote(() => ({...notes, tags: e.target.value}))}>
+          <select name="tags" className="select" onClick={(e)=> setNote(() => ({...notes, tags: e.target.value}))}>
             <option selected disabled>Tags</option>
             {tagItem.map((tagItemName) =>
             <option value={tagItemName}>{tagItemName}</option>
             )}
           </select>
-          <select name="priority" onClick={(e)=> setNote(() => ({...notes, priorityPlace: e.target.value}))}>
+          <select name="priority" className="select" onClick={(e)=> setNote(() => ({...notes, priorityPlace:
+            e.target.value}))}>
             <option selected disabled>Priority</option>
             {priority.map((priorityName) =>
             <option value={priorityName}>{priorityName}</option>
@@ -97,9 +95,8 @@ return (
           </select>
           <div className="footer-icons">
             <button onClick={createNoteFunction} className="icon-no-bg"><i class="far fa-plus"></i></button>
-            <input type="color" value={notes.bgColor} onChange={(e)=> setNote(()=> ({...notes, bgColor:
+            <input type="color" id="inp-color" value={notes.bgColor} onChange={(e)=> setNote(()=> ({...notes, bgColor:
             e.target.value}))}/>
-            <span><i class="far fa-tag"></i></span>
           </div>
         </div>
       </div>
@@ -111,12 +108,17 @@ return (
           <span><i class="far fa-thumbtack color"></i></span>
         </div>
         <p className="new-note-area note-area color">{notes.mainContent}</p>
-        <span>{notes.tags}</span>
-        <span>{notes.priorityPlace}</span>
-        <span>{notes.currentDate}</span>
+        <div className="note-tag">
+          {notes.tags.length>0 ? <button className="color tag-btn">{notes.tags}</button>:
+          <button className="color">{notes.tags}</button>}
+          {notes.priorityPlace.length>0 ?
+          <button className="color tag-btn">{notes.priorityPlace}</button>:
+          <button className="color">{notes.priorityPlace}</button>
+          }
+        </div>
+        <span className="color"><small className="small-text">{notes.currentDate}</small></span>
         <div className="note-footer">
           <div className="footer-icons">
-            <button className="icon-no-bg"><i class="fad fa-edit color"></i></button>
             <button onClick={()=> addToArchive(notes)}className="icon-no-bg"><i
                 class="fad fa-inbox-in color"></i></button>
             <button onClick={()=> addToTrash(notes)} className="icon-no-bg"><i class="far fa-trash color"></i></button>
@@ -127,6 +129,7 @@ return (
 
 
     </div>
+    <Filter />
   </div>
 </div>
 );

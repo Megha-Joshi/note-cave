@@ -1,6 +1,7 @@
 :root {
     --dark-red : #990033;
     --hover-red : #630222;
+    --text-color : #464646
 }
 
 body{
@@ -9,7 +10,10 @@ body{
 
 .page-heading{
     color: var(--dark-red);
-    /* margin: -1.313rem; */
-    /* font-size: 4.375rem; */
     font-weight: 500;
+}
+
+.note-text-color{
+    color: var(--text-color);
+
 }

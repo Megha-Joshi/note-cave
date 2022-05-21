@@ -8,7 +8,7 @@ import { useState } from "react";
 const Signup = () => {
 const navigate = useNavigate();
 const { authDispatch } = useAuth();
-const [ user, setUser] = useState({email: "", password: ""});
+const [ user, setUser] = useState({email: "", password: "", name: ""});
 
 const changeHandler = (e) => {
 const { id, value } = e.target;
@@ -51,6 +51,9 @@ return (
   <div class="login-container justify-align">
     <form class="container form-container">
       <h2 class="login-head">Signup</h2>
+      <label for="username" class="input-text">Name</label><br />
+      <input type="text" id="username" name="username" placeholder="Adarsh Balika" class="input-box title-content"
+        onChange={changeHandler} required /><br />
       <label for="username" class="input-text">Email address</label><br />
       <input type="text" id="username" name="username" placeholder="abc@gmail.com" class="input-box title-content"
         onChange={changeHandler} required /><br />
@@ -58,13 +61,13 @@ return (
       <input type="password" id="password" name="password" placeholder="**********" value={user.password}
         onChange={changeHandler} class="input-box title-content" required />
       <label for="checkbox">
-        <input type="checkbox" id="checkbox" name="checkbox" required /> I accept all Terms and Conditions</label>
+        <input type="checkbox" id="checkbox" name="checkbox" class="checkbox-inp-text" required /> I accept all Terms and Conditions</label>
       <div>
-        <button class="btn-info btn btn-text long-btn" onClick={signupHandler}>Create new Account</button>
+        <button class="btn-primary-login btn btn-text long-btn" onClick={signupHandler}>Create new Account</button>
       </div>
       <div class="new-ac">
         <Link to="/login">
-        <button class="btn-no-bg">Already have an Account</button>
+        <button class="btn btn-secondary-login">Already have an Account</button>
         </Link>
       </div>
     </form>

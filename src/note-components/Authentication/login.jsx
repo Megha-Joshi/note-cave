@@ -56,30 +56,29 @@ console.log(error);
 };
 return (
 <div className="App">
-  <Navbar />
   <div class="login-container justify-align">
     <form class="container form-container">
-      <h2 class="login-head">Login</h2>
-      <label for="username" class="input-text">Email address</label><br />
+      <h2 class="login-head note-text-color">Login</h2>
+      <label for="username" class="input-text note-text-color">Email address</label><br />
       <input type="text" id="email" name="username" placeholder="abc@gmail.com" value={user.email}
         class="input-box title-content" onChange={changeHandler} required /><br />
-      <label for="password" class="input-text">Password</label><br />
+      <label for="password" class="input-text note-text-color">Password</label><br />
       <input type="password" id="password" name="password" placeholder="**********" value={user.password}
         class="input-box title-content" onChange={changeHandler}required />
-      <div class="check-pass">
+      <div class="check-pass note-text-color">
         <label for="checkbox">
           <input type="checkbox" id="checkbox" name="checkbox" /> Remember me</label>
-        <button class="btn-no-bg">Forgot your Password?</button>
+        <button class="btn btn-secondary-login">Forgot your Password?</button>
       </div>
       <div>
-        <button class="btn-info btn btn-text long-btn" onClick={guestUserHandler}>Add Guest Credential</button>
+        <button class="btn-primary-login btn btn-text long-btn" onClick={guestUserHandler}>Add Guest Credential</button>
       </div>
       <div>
-        <button class="btn-info btn btn-text long-btn" onClick={loginHandler}>Login</button>
+        <button class="btn-primary-login btn btn-text long-btn" onClick={loginHandler}>Login</button>
       </div>
       <Link to="/signup">
       <div class="new-ac">
-        <button class="btn-no-bg">Create New Account</button>
+        <button class="btn btn-secondary-login">Create New Account</button>
       </div>
       </Link>
     </form>
