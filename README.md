@@ -1,6 +1,6 @@
 <h1 align = "center">
   <br />
-  Dot Note
+  Note Cave
   <br />
 </h1>
 
@@ -12,17 +12,19 @@
 
 ##  _How To Use_
 
-Explore [Note Cave](https://note-cave.netlify.app/) and start writing down everything you think without using pen and paper.
+Explore [Note Cave](https://note-cave.netlify.app/) and manage your daily tasks and workflow in a modern way.
 
 <br />
 
 
 ##  _Features_
 
-- Write notes easily. 
-- Archive your notes and restore them.
+- Create a new note. 
+- Add a note archive and restore them.
 - Add tags and priorities to your notes.
+- Send a note to trash.
 - Sort your notes.
+- Change background color to your choice of the card.
 - Write and see notes in dark mode.
 
 <br />
