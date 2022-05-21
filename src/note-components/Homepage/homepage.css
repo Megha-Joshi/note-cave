@@ -143,8 +143,9 @@
 }
 
 ::placeholder {
-    /* color: rgb(245, 245, 245, 0.6); */
     color: var(--font-color);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
 }
 
 .far,
