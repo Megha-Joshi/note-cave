@@ -1,37 +1,51 @@
 import "../Homepage/homepage.css"
-import { Link } from "react-router-dom";
-import { Filter } from "../Filter/filter";
-
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../../Context/auth-context";
 const Sidebar = () => {
+
+    const { authDispatch } = useAuth();
+    const navigate = useNavigate();
+
+    const currentActiveColor = ({isActive}) => ({
+        color : isActive ? "#990033" : "#c3c0c0"
+    })
+
+    const logoutHandler = () => {
+        navigate("/")
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        authDispatch({ type: "LOGOUT" });
+        }
+
 return (
 <div className="left-section">
-    <Link to="/home">
-    <div className="list left-icon text-color">
+    <NavLink style={currentActiveColor} to="/home">
+    <div className="list left-icon">
         <span><i class="far fa-home icon-color"></i></span>
         <p>Home</p>
     </div>
-    </Link>
-    <Link to="/label">
-    <div className="list left-icon text-color">
+    </NavLink>
+    <NavLink style={currentActiveColor} to="/label">
+    <div className="list left-icon">
         <span><i class="far fa-tag icon-color"></i></span>
         <p>Label</p>
     </div>
-    </Link>
-    <Link to="/archive" className="text-color">
+    </NavLink>
+    <NavLink style={currentActiveColor} to="/archive">
     <div className="list left-icon">
         <span><i class="far fa-archive icon-color"></i></span>
         <p>Archieve</p>
     </div>
-    </Link>
-    <Link to="/trash" className="text-color">
+    </NavLink>
+    <NavLink style={currentActiveColor} to="/trash">
     <div className="list left-icon">
         <span><i class="far fa-trash icon-color"></i></span>
         <p>Trash</p>
     </div>
-    </Link>
-    <div className="list left-icon text-color">
-        <span><i class="far fa-filter icon-color"></i></span>
-        <button><Filter /></button>
+    </NavLink>
+    <div className="list left-icon">
+        <span><i class="far fa-sign-out-alt icon-color"></i></span>
+        <p onClick={logoutHandler}>Logout</p>
     </div>
 </div>
 );
