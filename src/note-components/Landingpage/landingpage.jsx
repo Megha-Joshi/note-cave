@@ -23,7 +23,7 @@ return (
             </section>
         </div>
         <div className="right-container">
-            <img src="./notes.png" alt="Notes" className="home-img" />
+            <img src="./home-img.svg" alt="Notes" className="home-img" />
         </div>
     </div>
 </div>
