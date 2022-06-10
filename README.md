@@ -19,13 +19,18 @@ Explore [Note Cave](https://note-cave.netlify.app/) and manage your daily tasks 
 
 ##  _Features_
 
-- Create a new note. 
-- Add a note archive and restore them.
-- Add tags and priorities to your notes.
-- Send a note to trash.
-- Sort your notes.
-- Change background color to your choice of the card.
-- Write and see notes in dark mode.
+- Watch Videos
+- Filter videos by their categories
+- Like / Dislike Videos
+- View all the liked videos seperately
+- Add videos to watch later
+- View all the watches later videos separately
+- History is preserved for video you have watched
+- Authentication pages ( Click on the account-user icon on the navbar)
+Log In
+Sign Up
+Log Out
+- Single video page
 
 <br />
 
