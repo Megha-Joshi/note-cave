@@ -3,11 +3,13 @@ import "./homepage.css";
 import { Sidebar } from "../Sidebar/sidebar";
 import { useNote } from "../../Context/note-context";
 import { useAuth } from "../../Context/auth-context";
-import { createNote } from "../../note-API/create-note";
+import { createNote, editNote } from "../../note-API/create-note";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useFilter } from "../../Context/filter-context";
 import { Filter } from "../Filter/filter";
+import { useState } from "react";
+import Modal from "react-modal";
 
 const Homepage = () => {
 const {noteState, noteDispatch, notes, setNote, tagItem} = useNote();
@@ -16,7 +18,14 @@ const {authState} = useAuth();
 const { token } = authState;
 const navigate = useNavigate();
 const { filterState, finalFilter} = useFilter();
+const [modal, setModal] = useState(false);
+const [ currNote, setCurrNote] = useState({});
+const [newNote, setNewNote] = useState({ title: "", mainContent: "" , bgColor: "" , tags: "", priorityPlace: "", currentDate: ""});
 
+const editHandler = (editedNote) => {
+setModal(true);
+setCurrNote(editedNote)
+}
 
 const createNoteFunction = async () => {
 if (token) {
@@ -64,6 +73,19 @@ console.log(error);
 }
 }
 
+const customStyle = {
+overlay: {
+top: "6rem",
+backgroundColor: "rgba(52, 58, 64, 0.8)",
+},
+content: {
+width: "18rem",
+// height: "20rem",
+margin: "5rem auto",
+backgroundColor: "var(--box-color)",
+},
+};
+
 return (
 <div className="App">
   <div className="main-section">
@@ -74,7 +96,6 @@ return (
         <div className="note-header">
           <input type="text" name="search" placeholder="Title of the note ..." value={notes.title}
             className="inp-title text-color" onChange={(e)=> setNote(() => ({ ...notes, title: e.target.value }))}/>
-          <span><i class="far fa-thumbtack"></i></span>
         </div>
         <textarea type="text" placeholder="Start Writing your note ..." value={notes.mainContent}
           className="note-area text-color"
@@ -105,7 +126,6 @@ return (
       <div className="note-list" style={{backgroundColor: notes.bgColor}}>
         <div className="note-header">
           <h2 className="inp-title color">{notes.title}</h2>
-          <span><i class="far fa-thumbtack color"></i></span>
         </div>
         <p className="new-note-area note-area color">{notes.mainContent}</p>
         <div className="note-tag">
@@ -119,6 +139,7 @@ return (
         <span className="color"><small className="small-text">{notes.currentDate}</small></span>
         <div className="note-footer">
           <div className="footer-icons">
+            <button className="icon-no-bg" onClick={()=> editHandler(notes)}><i class="fad fa-edit color"></i></button>
             <button onClick={()=> addToArchive(notes)}className="icon-no-bg"><i
                 class="fad fa-inbox-in color"></i></button>
             <button onClick={()=> addToTrash(notes)} className="icon-no-bg"><i class="far fa-trash color"></i></button>
@@ -126,6 +147,41 @@ return (
         </div>
       </div>
       )}
+
+      {
+      modal && (
+      <Modal isOpen={ modal } style={ customStyle }>
+        <header className="modal-header">
+          <h3 className="card-title">Edit Note</h3>
+          <i class="fas fa-times icon-color" onClick={()=> setModal(false)}></i>
+        </header>
+        <main className="modal-subhead">
+          <input type="text" placeholder="Note Title" className="inp-box" value={newNote.title} onChange={(e)=>
+          setNewNote({...newNote, title: e.target.value})}/>
+          <textarea type="text" placeholder="Note Description" className="inp-box" value={newNote.mainContent}
+            onChange={(e)=> setNewNote({...newNote, mainContent: e.target.value, currentDate : new Date().toLocaleString()})}></textarea>
+          <div className="edit-modal-footer">
+          <input type="color" id="inp-color" value={notes.bgColor} onChange={(e)=> setNewNote(()=> ({...newNote, bgColor:
+            e.target.value}))}/>
+            <select name="tags" className="modal-select" onClick={(e)=> setNewNote(() => ({...newNote, tags: e.target.value}))}>
+              <option selected disabled>Tags</option>
+              {tagItem.map((tagItemName) =>
+              <option value={tagItemName}>{tagItemName}</option>
+              )}
+            </select>
+            <select name="priority" className="modal-select" onClick={(e)=> setNewNote(() => ({...newNote, priorityPlace: e.target.value}))}>
+              <option selected disabled>Priority</option>
+              {priority.map((priorityName) =>
+              <option value={priorityName}>{priorityName}</option>
+              )}
+            </select>
+          </div>
+          <button className="btn btn-primary-login btn-text" onClick={()=> editNote(token, currNote, newNote,
+            noteDispatch)}>EDIT Task</button>
+        </main>
+      </Modal>
+      )
+      }
 
 
     </div>
