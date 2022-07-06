@@ -4,10 +4,12 @@ import { Navbar } from "../Navbar/navbar";
 import { Sidebar } from "../Sidebar/sidebar";
 import { useNote } from "../../Context/note-context";
 import { useAuth } from "../../Context/auth-context";
-import { createNote } from "../../note-API/create-note";
+import { createNote, editNote } from "../../note-API/create-note";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useFilter } from "../../Context/filter-context";
+import { useState } from "react";
+import Modal from "react-modal";
 
 const Homepage = () => {
 const {noteState, noteDispatch, notes, setNote, tagItem} = useNote();
@@ -16,6 +18,14 @@ const {authState} = useAuth();
 const { token } = authState;
 const navigate = useNavigate();
 const { filterState, finalFilter} = useFilter();
+const [modal, setModal] = useState(false);
+const [ currNote, setCurrNote] = useState({});
+const [newNote, setNewNote] = useState({ title: "", mainContent: "" , bgColor: "" , tags: "", priorityPlace: ""});
+
+const editHandler = (editedNote) => {
+  setModal(true);
+  setCurrNote(editedNote)
+}
 
 
 const createNoteFunction = async () => {
@@ -65,6 +75,18 @@ console.log(error);
 }
 }
 
+const customStyle = {
+  overlay: {
+  top: "6rem",
+  backgroundColor: "rgba(52, 58, 64, 0.8)",
+  },
+  content: {
+  width: "18rem",
+  // height: "20rem",
+  margin: "5rem auto",
+  backgroundColor: "var(--box-color)",
+  },
+  };
 
 return (
 <div className="App">
@@ -115,7 +137,7 @@ return (
         <span>{notes.priorityPlace}</span>
         <div className="note-footer">
           <div className="footer-icons">
-            <button className="icon-no-bg"><i class="fad fa-edit color"></i></button>
+            <button className="icon-no-bg" onClick={() => editHandler(notes)}><i class="fad fa-edit color"></i></button>
             <button onClick={()=> addToArchive(notes)}className="icon-no-bg"><i
                 class="fad fa-inbox-in color"></i></button>
             <button onClick={()=> addToTrash(notes)} className="icon-no-bg"><i class="far fa-trash color"></i></button>
@@ -123,6 +145,46 @@ return (
         </div>
       </div>
       )}
+
+      {
+      modal && (
+      <Modal isOpen={ modal } style={ customStyle }>
+        <header className="modal-header">
+          <h3 className="card-title">Edit Note</h3>
+          <i class="fas fa-times icon-color" onClick={()=> setModal(false)}></i>
+        </header>
+        <main className="modal-subhead">
+          <input type="text" placeholder="Note Title" className="inp-box" value={newNote.title} onChange={(e)=>
+          setNewNote({...newNote, title: e.target.value})}/>
+          <textarea type="text" placeholder="Note Description" className="inp-box" value={newNote.mainContent}
+            onChange={(e)=> setNewNote({...newNote, mainContent: e.target.value})}></textarea>
+          <input type="color" value={newNote.bgColor} onChange={(e)=> setNewNote(()=> ({...newNote, bgColor:
+          e.target.value}))}/>
+          <div className="time-container">
+            <div className="time-box">
+              <label className="time-head">Duration</label>
+              <select name="tags" onClick={(e)=> setNewNote(() => ({...newNote, tags: e.target.value}))}>
+                <option selected disabled>Tags</option>
+                {tagItem.map((tagItemName) =>
+                <option value={tagItemName}>{tagItemName}</option>
+                )}
+              </select>
+            </div>
+            <div className="time-box">
+              <label className="time-head">Break</label>
+              <select name="priority" onClick={(e)=> setNewNote(() => ({...newNote, priorityPlace: e.target.value}))}>
+                <option selected disabled>Priority</option>
+                {priority.map((priorityName) =>
+                <option value={priorityName}>{priorityName}</option>
+                )}
+              </select>
+            </div>
+          </div>
+          <button className="btn btn-info btn-text btn-modal" onClick={()=> editNote(token, currNote, newNote, noteDispatch)}>EDIT Task</button>
+        </main>
+      </Modal>
+      )
+      }
 
 
     </div>

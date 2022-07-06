@@ -137,3 +137,80 @@ input[type="color"] {
     height:20px;
     border-radius: 50%
 }
+
+
+
+
+
+
+/*  */
+
+.modal-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.modal-title{
+    color: var(--font-color);
+    text-align: start;
+    padding: 5px;
+    margin: 5px 5px 0px 5px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.modal-subhead{
+    margin: 1.5rem;
+}
+
+.center-btn{
+    margin-left: 7rem;
+}
+
+.card-title{
+    color: var(--text-color);
+    text-align: start;
+    padding: 5px;
+    margin: 5px 5px 0px 5px;
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.card-subhead{
+    color: var(--accent-color);
+    text-align: start;
+    padding: 5px;
+    margin: 15px;
+    font-weight: 600;
+}
+
+.inp-box{
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.inp-time-box{
+    width: 70%;
+}
+
+.time-container{
+    display: flex;
+}
+
+.time-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time-head{
+    font-weight: 300;
+}
+
+.btn-modal{
+    margin-top: 2rem;
+}
