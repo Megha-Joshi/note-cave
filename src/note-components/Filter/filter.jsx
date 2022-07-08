@@ -22,8 +22,8 @@ return(
     <label className="label-filter label-head">Sort By Priority</label>
     {priority.map((priorityName)=> (
     <label class="label-filter">
-        <input type="radio" name="tag" value={ priorityName} classNmae="inp-filter" onClick={(e)=>filterDispatch({type :
-        "TAGS", payload : e.target.value})}/> {priorityName} </label>
+        <input type="radio" name="priority" value={ priorityName} className="inp-filter" onClick={(e)=>filterDispatch({type :
+        "PRIORITY", payload : e.target.value})}/> {priorityName} </label>
 
     ))}
 </div>
