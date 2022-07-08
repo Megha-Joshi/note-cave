@@ -10,15 +10,16 @@
 
 .login-container {
     display: flex;
-    width: 100%;
     height: 80vh;
 }
 
-.form-container {
-    width: 28%;
-    height: 78%;
-    padding: 1rem;
-}
+.container{
+    background-color: var(--bg-color);
+    border-radius: var(--container-border-radius);
+    margin: 1rem;
+    padding: var(--container-padding); 
+} 
+
 
 .input-box {
     width: 100%;
@@ -27,6 +28,7 @@
 
 .long-btn {
     width: 95%;
+    margin: 0.75rem;
 }
 
 .btn-no-bg:hover {

@@ -7,6 +7,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 80vh;
+    flex-wrap: wrap;
 }
 
 .left-container {
@@ -58,4 +59,26 @@ body {
 
 .home-img {
     width: 35rem;
+}
+
+@media screen and (max-width: 1000px) {
+    .left-container{
+        width: 90%;
+        margin: 2rem;
+    }
+
+    .right-container{
+        width: 90%;
+        margin: 2rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .home-img{
+        width: 23rem;
+    }
+
+    .heading{
+        font-size: 3.5rem;
+    }
 }
