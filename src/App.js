@@ -9,13 +9,13 @@ import { Trash } from "./note-components/Trash/trash";
 import { Archive } from "./note-components/Archive/archive";
 import { Label } from "./note-components/Label/label";
 import { useTheme } from "./Context/theme-context";
-import { Navbar } from "./note-components/Navbar/navbar";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const { theme } = useTheme();
   return (
     <div className={`App ${theme === "dark" ? "dark-theme" : ""}`}>
-      <Navbar />
+      <Toaster />
       <Routes>
         <Route path="/" element={<Landingpage />} />
         <Route path="/home" element={<Homepage />} />

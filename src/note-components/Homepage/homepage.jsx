@@ -10,6 +10,8 @@ import { useFilter } from "../../Context/filter-context";
 import { Filter } from "../Filter/filter";
 import { useState } from "react";
 import Modal from "react-modal";
+import { NavbarResp } from "../Navbar/navbarResp.jsx";
+import { toast } from "react-hot-toast";
 
 const Homepage = () => {
 const {noteState, noteDispatch, notes, setNote, tagItem} = useNote();
@@ -20,7 +22,8 @@ const navigate = useNavigate();
 const { filterState, finalFilter} = useFilter();
 const [modal, setModal] = useState(false);
 const [ currNote, setCurrNote] = useState({});
-const [newNote, setNewNote] = useState({ title: "", mainContent: "" , bgColor: "" , tags: "", priorityPlace: "", currentDate: ""});
+const [newNote, setNewNote] = useState({ title: "", mainContent: "" , bgColor: "" , tags: "", priorityPlace: "",
+currentDate: ""});
 
 const editHandler = (editedNote) => {
 setModal(true);
@@ -48,9 +51,11 @@ noteDispatch({
 type: "DELETE_NOTE",
 payload: {note: response.data.notes, trash: item},
 });
+toast.success("Note added to trash");
 }
 }catch(error){
 console.log(error);
+toast.error("Note cannot add to trash");
 }
 }
 
@@ -67,9 +72,11 @@ noteDispatch({
 type: "ADD_TO_ARCHIVE",
 payload: {note: response.data.notes, archive: response.data.archives}
 });
+toast.success("Note added to archive");
 }
 }catch(error){
 console.log(error);
+toast.error("Note cannot add to archive");
 }
 }
 
@@ -80,7 +87,6 @@ backgroundColor: "rgba(52, 58, 64, 0.8)",
 },
 content: {
 width: "18rem",
-// height: "20rem",
 margin: "5rem auto",
 backgroundColor: "var(--box-color)",
 },
@@ -88,6 +94,7 @@ backgroundColor: "var(--box-color)",
 
 return (
 <div className="App">
+  <NavbarResp />
   <div className="main-section">
     <Sidebar />
 
@@ -161,15 +168,18 @@ return (
           <textarea type="text" placeholder="Note Description" className="inp-box" value={newNote.mainContent}
             onChange={(e)=> setNewNote({...newNote, mainContent: e.target.value, currentDate : new Date().toLocaleString()})}></textarea>
           <div className="edit-modal-footer">
-          <input type="color" id="inp-color" value={notes.bgColor} onChange={(e)=> setNewNote(()=> ({...newNote, bgColor:
+            <input type="color" id="inp-color" value={notes.bgColor} onChange={(e)=> setNewNote(()=> ({...newNote,
+            bgColor:
             e.target.value}))}/>
-            <select name="tags" className="modal-select" onClick={(e)=> setNewNote(() => ({...newNote, tags: e.target.value}))}>
+            <select name="tags" className="modal-select" onClick={(e)=> setNewNote(() => ({...newNote, tags:
+              e.target.value}))}>
               <option selected disabled>Tags</option>
               {tagItem.map((tagItemName) =>
               <option value={tagItemName}>{tagItemName}</option>
               )}
             </select>
-            <select name="priority" className="modal-select" onClick={(e)=> setNewNote(() => ({...newNote, priorityPlace: e.target.value}))}>
+            <select name="priority" className="modal-select" onClick={(e)=> setNewNote(() => ({...newNote,
+              priorityPlace: e.target.value}))}>
               <option selected disabled>Priority</option>
               {priority.map((priorityName) =>
               <option value={priorityName}>{priorityName}</option>
