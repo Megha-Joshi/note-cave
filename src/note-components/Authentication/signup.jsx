@@ -4,9 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/auth-context";
 import { signUpAPI } from "../../note-API/auth-API";
 import { useState } from "react";
+import { useTheme } from "../../Context/theme-context";
+import { Navbar } from "../Navbar/navbar";
+import { toast } from "react-hot-toast";
 
 const Signup = () => {
 const navigate = useNavigate();
+const { theme, setTheme } = useTheme();
 const { authDispatch } = useAuth();
 const [ user, setUser] = useState({email: "", password: "", name: ""});
 
@@ -36,32 +40,36 @@ user: resp.data.createdUser,
 token: resp.data.encodedToken,
 },
 });
-
+toast.success("Signed In successfully!");
 navigate("/home");
 } else {
 throw new Error("Something went wrong! Please try again later");
 }
 } catch (error) {
 console.log(error);
+toast.error("Cannot sign in");
 }
-} else alert("Enter all the fields");
+} else
+toast.error("Enter all the fields");
 };
 return (
 <div className="App">
+  <Navbar />
   <div class="login-container justify-align">
-    <form class="container form-container">
-      <h2 class="login-head">Signup</h2>
-      <label for="username" class="input-text">Name</label><br />
+    <form class="container">
+      <h2 class="login-head note-text-color">Signup</h2>
+      <label for="username" class="input-text note-text-color">Name</label><br />
       <input type="text" id="username" name="username" placeholder="Adarsh Balika" class="input-box title-content"
         onChange={changeHandler} required /><br />
-      <label for="username" class="input-text">Email address</label><br />
+      <label for="username" class="input-text note-text-color">Email address</label><br />
       <input type="text" id="username" name="username" placeholder="abc@gmail.com" class="input-box title-content"
         onChange={changeHandler} required /><br />
-      <label for="password" class="input-text">Password</label><br />
+      <label for="password" class="input-text note-text-color">Password</label><br />
       <input type="password" id="password" name="password" placeholder="**********" value={user.password}
         onChange={changeHandler} class="input-box title-content" required />
-      <label for="checkbox">
-        <input type="checkbox" id="checkbox" name="checkbox" class="checkbox-inp-text" required /> I accept all Terms and Conditions</label>
+      <label for="checkbox" className="note-text-color">
+        <input type="checkbox" id="checkbox" name="checkbox" class="checkbox-inp-text" required /> I accept all Terms
+        and Conditions</label>
       <div>
         <button class="btn-primary-login btn btn-text long-btn" onClick={signupHandler}>Create new Account</button>
       </div>

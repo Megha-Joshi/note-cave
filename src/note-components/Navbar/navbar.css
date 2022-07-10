@@ -7,9 +7,19 @@
     background-color: whitesmoke;
 }
 
+.navbar-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    background-color: whitesmoke;
+}
+
 .nav-heading {
     font-weight: 600;
     color: var(--dark-red);
+    cursor: pointer;
 }
 
 .btn-primary-login {
@@ -31,4 +41,39 @@
 
 .search-box:focus {
     outline: 1px solid var(--dark-red);
+}
+
+.nav-icons {
+    display: flex;
+    gap: 2rem;
+}
+
+.bar-hide,
+.filter-hide {
+    display: none;
+}
+
+.left-list-hide {
+    background-color: var(--bg-color);
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin: 0;
+    height: 100vh;
+    z-index: 15;
+    color: var(--text-color);
+    font-weight: 500;
+    text-align: start;
+}
+
+.list-close {
+    padding: 1rem;
+}
+
+@media screen and (max-width: 800px) {
+
+    .bar-hide,
+    .filter-hide {
+        display: block;
+    }
 }

@@ -1,6 +1,7 @@
 import "../Label/label.css";
 import { Sidebar } from "../Sidebar/sidebar";
 import { useNote } from "../../Context/note-context";
+import { NavbarResp } from "../Navbar/navbarResp";
 
 const Label = () => {
 const { tagItem, setTagItem } = useNote();
@@ -19,25 +20,22 @@ setTagItem(tagItem.filter((_,index) => index !== indexDeleted));
 }
 return (
 <div className="App">
+    <NavbarResp />
     <div className="main-section">
         <Sidebar />
         <div className="right-section">
-            <h2 className="page-heading">Label</h2>
             <div class="chips-container">
                 <div class="container-one">
                     <p class="chips-content note-text-color">Label</p>
-                    <div class="items">
-                        <ul class="chips-btn-one">
-                            {tagItem.map((item,index) => (
-                            <li class="first chips-btn">{item}
-                                <span className="icon-no-bg" onClick={()=> deleteTagFunction(index)}><i
-                                        class="fad fa-times-circle"></i></span>
-                            </li>)
-                            )}
-                            <input placeholder="Press enter to add a label" class="chips-inp"
-                                onKeyUp={addTagFunction} />
-                        </ul>
-                    </div>
+                    <ul class="chips-list">
+                        {tagItem.map((item,index) => (
+                        <li class="chips-item">{item}
+                            <span className="icon-no-bg chips-icon" onClick={()=> deleteTagFunction(index)}><i
+                                    class="fad fa-times-circle"></i></span>
+                        </li>)
+                        )}
+                        <input placeholder="Press enter to add a label" class="chips-inp" onKeyUp={addTagFunction} />
+                    </ul>
                 </div>
             </div>
         </div>

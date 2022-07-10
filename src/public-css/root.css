@@ -1,19 +1,23 @@
 :root {
-    --dark-red : #990033;
-    --hover-red : #630222;
-    --text-color : #464646
+    --dark-red: #990033;
+    --hover-red: #630222;
+    --text-color: #464646
 }
 
-body{
+body {
     font-family: 'Montserrat', sans-serif;
 }
 
-.page-heading{
+.page-heading {
     color: var(--dark-red);
     font-weight: 500;
 }
 
-.note-text-color{
+.note-text-color {
     color: var(--text-color);
 
+}
+
+.list-color {
+    color: #ba5273;
 }

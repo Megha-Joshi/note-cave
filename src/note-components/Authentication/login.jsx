@@ -2,11 +2,14 @@ import "../../public-css/root.css";
 import "../Authentication/auth.css";
 import { useAuth } from "../../Context/auth-context";
 import { loginAPI } from "../../note-API/auth-API";
-import { Navbar } from "../Navbar/navbar";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useTheme } from "../../Context/theme-context";
+import { Navbar } from "../Navbar/navbar";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
+const { theme, setTheme } = useTheme();
 const { authDispatch} = useAuth();
 const navigate = useNavigate();
 const [ user, setUser ] = useState({email: "", password: ""});
@@ -42,22 +45,25 @@ user: resp.data.foundUser,
 token: resp.data.encodedToken,
 },
 });
-
+toast.success("Logged In Successfully!")
 navigate("/home");
 } else if (resp.status === 404) {
-alert("Email not registered");
+toast.error("Email not registered");
 } else {
 throw new Error("Something went wrong! Please try again later");
 }
 } catch (error) {
 console.log(error);
+toast.error("Cannot login in");
 }
-} else alert("Enter both field");
+} else
+toast.error("Enter both field");
 };
 return (
 <div className="App">
+  <Navbar />
   <div class="login-container justify-align">
-    <form class="container form-container">
+    <form class="container">
       <h2 class="login-head note-text-color">Login</h2>
       <label for="username" class="input-text note-text-color">Email address</label><br />
       <input type="text" id="email" name="username" placeholder="abc@gmail.com" value={user.email}

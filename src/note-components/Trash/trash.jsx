@@ -2,16 +2,18 @@ import "../../public-css/root.css"
 import "../Homepage/homepage.css"
 import { Sidebar } from "../Sidebar/sidebar";
 import { useNote } from "../../Context/note-context";
+import { NavbarResp } from "../Navbar/navbarResp";
 
 const Trash = () => {
 const { noteState, noteDispatch } = useNote();
 const { trash } = noteState;
 return (
 <div className="App">
+  <NavbarResp />
   <div className="main-section">
     <Sidebar />
     <div className="right-section">
-      <h2 className="page-heading">Trash</h2>
+      {trash.length === 0 && <h2 className="page-heading">No trashed note</h2>}
       {trash.map((notes) =>
       <div className="note-list">
         <div className="note-header">

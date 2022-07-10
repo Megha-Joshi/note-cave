@@ -1,37 +1,28 @@
-.chips-container{
+.chips-container {
     display: flex;
     flex-direction: column;
     border: 1px solid var(--box-color);
     border-radius: 5px;
     margin: 10px;
     padding: 10px;
-    cursor: pointer; 
-    flex-wrap: wrap;
-    width: 100%;
+    cursor: pointer;
 }
 
-.container-one{
-    display: flex;
-    background-color: var(--box-color);
-    flex: 0 0 5.625rem;
-    flex-direction: column;
+.container-one {
+    background-color: var(--hover-red);
     border-bottom: 1px solid var(--font-color);
     margin: 1.875rem;
     padding: 0px 0px 5px 15px;
     border-radius: 5px;
-    gap: 1rem;
-    flex-wrap: wrap;
-    width: 90%;
-    justify-content: center;
-    align-items: center;
 }
 
 .container-one:hover {
     border-bottom: 2px solid black;
 }
 
-.chips-content{
+.chips-content {
     padding: 1rem;
+    color: #d5bdc5;
 }
 
 .text {
@@ -39,40 +30,20 @@
     cursor: default;
 }
 
-.items {
+.chips-list {
     display: flex;
-    gap: 1.25rem;
-    align-items: center;
-    margin-bottom: 10px;
+    margin: 10px;
+    padding: 1rem;
+    color: var(--font-color);
+    font-weight: 500;
     flex-wrap: wrap;
 }
 
-.chips-btn {
+.chips-item,
+.chips-inp {
     display: flex;
     gap: 1rem;
-    flex: 0 0 1.875rem;
-    height: 25px;
-    align-items: center;
-    justify-content: center;
-    background-color: #464646;
-    border-radius: 10px;
-    margin: 10px;
-    padding: 1rem;
-    color: var(--bg-color);
-    font-weight: 500;
-}
-
-.chips-btn:hover {
-    background-color: lightgrey;
-    cursor: default;
-}
-
-.chips-btn-one {
-    display: flex;
-    gap: 1rem;
-    flex: 0 0 1.875rem;
-    align-items: center;
-    justify-content: center;
+    background-color: whitesmoke;
     border-radius: 10px;
     margin: 10px;
     padding: 1rem;
@@ -80,11 +51,15 @@
     font-weight: 500;
 }
 
-.chips-inp{
-    border-radius: 5px;
-    padding: 8px;
+.chips-item:hover {
+    background-color: #d5bdc5;
+    cursor: default;
 }
 
-.chips-inp ::placeholder{
+.chips-icon {
+    color: var(--hover-red);
+}
+
+.chips-inp ::placeholder {
     color: var(--font-color);
 }

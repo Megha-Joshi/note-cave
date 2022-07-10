@@ -1,10 +1,10 @@
 import "../../public-css/root.css"
 import "../Homepage/homepage.css"
-import { Navbar } from "../Navbar/navbar";
 import { Sidebar } from "../Sidebar/sidebar";
 import { useNote } from "../../Context/note-context";
 import { useAuth } from "../../Context/auth-context";
 import axios from "axios";
+import { NavbarResp } from "../Navbar/navbarResp.jsx";
 
 const Archive = () => {
 const { noteState, noteDispatch } = useNote();
@@ -49,29 +49,13 @@ console.log(error);
 }
 return (
 <div className="App">
+  <NavbarResp />
   <div className="main-section">
     <Sidebar />
     <div className="right-section">
-      <h2 className="page-heading">Archive</h2>
-      {/* {archive.map((item) =>
-      <div className="note-list">
-        <div className="note-header">
-          <h2 className="inp-title color">{item.title}</h2>
-        </div>
-        <p className="new-note-area note-area color">{item.mainContent}</p>
-        <div className="note-footer">
-          <div className="footer-icons">
-            <button onClick={()=> restoreFromArchive(item)} className="icon-no-bg"><i
-                class="fad fa-inbox-out color"></i></button>
-            <button onClick={()=> addToTrashFromArchive(item)} className="icon-no-bg"><i
-                class="far fa-trash color"></i></button>
-          </div>
-        </div>
-      </div>
-      )} */}
-
+      {archive.length === 0 && <h2 className="page-heading">No archived note</h2>}
       {archive.map((notes) =>
-        <div className="note-list">
+      <div className="note-list">
         <div className="note-header">
           <h2 className="inp-title color">{notes.title}</h2>
         </div>
@@ -87,14 +71,13 @@ return (
         <span className="color"><small className="small-text">{notes.currentDate}</small></span>
         <div className="note-footer">
           <div className="footer-icons">
-          <button onClick={()=> restoreFromArchive(notes)} className="icon-no-bg"><i
+            <button onClick={()=> restoreFromArchive(notes)} className="icon-no-bg"><i
                 class="fad fa-inbox-out color"></i></button>
             <button onClick={()=> addToTrashFromArchive(notes)} className="icon-no-bg"><i
                 class="far fa-trash color"></i></button>
           </div>
         </div>
       </div>
-
       )}
     </div>
   </div>

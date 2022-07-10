@@ -1,16 +1,22 @@
+import "../../public-css/root.css";
 import "./navbar.css"
 import { useTheme } from "../../Context/theme-context";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
 const { theme, setTheme } = useTheme();
 return (
 <nav className="navbar-section">
-    <h2 className="text-color nav-heading">NOTE CAVE</h2>
-    {theme === "light" ? (
-    <button onClick={()=> setTheme("dark")}><i class="fas fa-moon fa-2x"> </i></button>
-    ) : (
-    <button onClick={()=> setTheme("light")}><i class="fad fa-sun fa-2x"></i></button>
-    )}
+    <NavLink to="/">
+        <h2 className="nav-heading">NOTE CAVE</h2>
+    </NavLink>
+    <div className="nav-icons">
+        {theme === "light" ? (
+        <button onClick={()=> setTheme("dark")}><i class="fas fa-moon fa-2x"> </i></button>
+        ) : (
+        <button onClick={()=> setTheme("light")}><i class="fad fa-sun fa-2x"></i></button>
+        )}
+    </div>
 </nav>
 );
 }
