@@ -31,7 +31,6 @@ return (
         <span className="color"><small className="small-text">{notes.currentDate}</small></span>
         <div className="note-footer">
           <div className="footer-icons">
-            <span><i class="fad fa-inbox-in color"></i></span>
             <button className="icon-no-bg" onClick={(e)=> noteDispatch({type:"DELETE_FROM_TRASH", payload:
               notes._id})}><i class="far fa-trash color"></i></button>
           </div>

@@ -34,7 +34,7 @@ return (
             <li className="list left-icon"><span><i class="far fa-trash icon-color"></i></span>Trash</li>
         </NavLink>
         <NavLink style={currentActiveColor} to="/" className="list-color">
-            <li className="list list-icon" onClick={logoutHandler}><span><i
+            <li className="list left-icon" onClick={logoutHandler}><span><i
                         class="far fa-sign-out-alt icon-color"></i></span>Logout</li>
         </NavLink>
     </ul>

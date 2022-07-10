@@ -13,12 +13,12 @@
     height: 80vh;
 }
 
-.container{
+.container {
     background-color: var(--bg-color);
     border-radius: var(--container-border-radius);
     margin: 1rem;
-    padding: var(--container-padding); 
-} 
+    padding: var(--container-padding);
+}
 
 
 .input-box {

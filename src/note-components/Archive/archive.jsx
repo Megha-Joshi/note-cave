@@ -5,10 +5,11 @@ import { useNote } from "../../Context/note-context";
 import { useAuth } from "../../Context/auth-context";
 import axios from "axios";
 import { NavbarResp } from "../Navbar/navbarResp.jsx";
+import { toast } from "react-hot-toast";
 
 const Archive = () => {
 const { noteState, noteDispatch } = useNote();
-const { note, trash, archive } = noteState;
+const { archive } = noteState;
 const {authState} = useAuth();
 const { token } = authState;
 
@@ -24,8 +25,10 @@ noteDispatch({
 type: "DELETE_NOTE_FROM_ARCHIVE",
 payload: {archive: response.data.archives, trash: item},
 });
+toast.success("Note moved to trash");
 }
 }catch(error){
+toast.error("Note cannot moved to trash");
 console.log(error);
 }
 }
@@ -42,8 +45,10 @@ noteDispatch({
 type: "RESTORE_NOTE_FROM_ARCHIVE",
 payload: {note: response.data.notes, archive: response.data.archives}
 });
+toast.success("Note restored from archive");
 }
 }catch(error){
+toast.success("Note cannot restore from archive");
 console.log(error);
 }
 }

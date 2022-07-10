@@ -3,7 +3,6 @@ import { useNote } from "./note-context";
 
 const FilterContext = createContext();
 
-
 const FilterProvider = ({children}) => {
     const { noteState } = useNote();
     const { note} = noteState;

@@ -1,3 +1,4 @@
+import "../../public-css/root.css";
 import "../Label/label.css";
 import { Sidebar } from "../Sidebar/sidebar";
 import { useNote } from "../../Context/note-context";

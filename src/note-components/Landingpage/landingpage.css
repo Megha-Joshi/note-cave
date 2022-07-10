@@ -42,6 +42,7 @@ body {
     background-color: transparent;
     color: var(--dark-red);
     font-size: medium;
+    cursor: pointer;
 }
 
 .btn-secondary-login:hover {
@@ -62,23 +63,23 @@ body {
 }
 
 @media screen and (max-width: 1000px) {
-    .left-container{
+    .left-container {
         width: 90%;
         margin: 2rem;
     }
 
-    .right-container{
+    .right-container {
         width: 90%;
         margin: 2rem;
     }
 }
 
 @media screen and (max-width: 600px) {
-    .home-img{
+    .home-img {
         width: 23rem;
     }
 
-    .heading{
+    .heading {
         font-size: 3.5rem;
     }
 }
