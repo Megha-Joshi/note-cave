@@ -17,12 +17,12 @@
 }
 
 .container-one:hover {
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--font-color);
 }
 
 .chips-content {
     padding: 1rem;
-    color: #d5bdc5;
+    color: var(--note-content);
 }
 
 .text {
@@ -43,7 +43,7 @@
 .chips-inp {
     display: flex;
     gap: 1rem;
-    background-color: whitesmoke;
+    background-color: var(--bg-color);
     border-radius: 10px;
     margin: 10px;
     padding: 1rem;
@@ -52,7 +52,7 @@
 }
 
 .chips-item:hover {
-    background-color: #d5bdc5;
+    background-color: var(--note-content);
     cursor: default;
 }
 

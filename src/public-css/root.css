@@ -1,7 +1,10 @@
 :root {
     --dark-red: #990033;
     --hover-red: #630222;
-    --text-color: #464646
+    --text-color: #464646;
+    --note-color: #ba5273;
+    --new-note-color: #751E3B;
+    --note-content: #d5bdc5;
 }
 
 body {
@@ -19,5 +22,5 @@ body {
 }
 
 .list-color {
-    color: #ba5273;
+    color: var(--note-color);
 }

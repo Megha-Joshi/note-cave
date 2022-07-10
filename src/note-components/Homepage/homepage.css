@@ -7,9 +7,10 @@
     box-shadow: 0 2px 5px #333;
 }
 
-.left-list{
+.left-list {
     text-align: center;
 }
+
 .list {
     display: flex;
     gap: 1rem;
@@ -42,6 +43,7 @@
     align-items: center;
     gap: 1.5rem;
     width: 70%;
+    margin: 1rem;
 }
 
 .filter-section {
@@ -53,7 +55,7 @@
 
 .note-con {
     display: flex;
-    background-color: #ba5273;
+    background-color: var(--note-color);
     flex-direction: column;
     gap: 10px;
     padding: 0.938rem;
@@ -63,7 +65,7 @@
 
 .note-list {
     display: flex;
-    background-color: #751E3B;
+    background-color: var(--new-note-color);
     flex-direction: column;
     gap: 10px;
     padding: 0.938rem;
@@ -133,7 +135,7 @@
 }
 
 .icon-color {
-    color: #ba5273;
+    color: var(--note-color);
 }
 
 .text-color {
@@ -141,7 +143,7 @@
 }
 
 .color {
-    color: #d5bdc5;
+    color: var(--note-content);
 }
 
 ::placeholder {
@@ -157,7 +159,7 @@
 }
 
 .fas {
-    color: black;
+    color: var(--font-color);
 }
 
 .icon-no-bg {
@@ -165,8 +167,8 @@
 }
 
 #inp-color {
-    width: 25px;
-    height: 25px;
+    width: 27px;
+    height: 27px;
     background-color: transparent;
     border: none;
 }
@@ -218,16 +220,16 @@
     flex-wrap: wrap;
 }
 
-/*  */
+/* Modal */
 
-.modal-header{
+.modal-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 2rem;
 }
 
-.modal-title{
+.modal-title {
     color: var(--font-color);
     text-align: start;
     padding: 5px;
@@ -236,15 +238,15 @@
     text-decoration: underline;
 }
 
-.modal-subhead{
+.modal-subhead {
     margin: 1.5rem;
 }
 
-.center-btn{
+.center-btn {
     margin-left: 7rem;
 }
 
-.card-title{
+.card-title {
     color: var(--text-color);
     text-align: start;
     padding: 5px;
@@ -254,7 +256,7 @@
     font-weight: 600;
 }
 
-.card-subhead{
+.card-subhead {
     color: var(--accent-color);
     text-align: start;
     padding: 5px;
@@ -262,22 +264,21 @@
     font-weight: 600;
 }
 
-.inp-box{
+.inp-box {
     padding: 10px;
     border-radius: 5px;
     margin: 10px;
 }
 
-.inp-time-box{
+.inp-time-box {
     width: 70%;
 }
 
-.edit-modal-footer{
+.edit-modal-footer {
     display: flex;
     justify-content: space-around;
-    gap: 10px;
-    margin: 10px;
-    margin-bottom: 2rem;
+    gap: 5px;
+    margin: 2rem 0rem;
 }
 
 .modal-select {
@@ -287,16 +288,16 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-@media screen and (max-width: 800px) {
-    .left-section-hide{
+@media screen and (max-width: 1000px) {
+    .left-section-hide {
         display: none;
     }
 
-    .filter-section-hide{
+    .filter-section-hide {
         display: none;
     }
 
-    .main-section{
+    .main-section {
         justify-content: center;
         margin-top: 5rem;
     }
