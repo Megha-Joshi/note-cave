@@ -63,28 +63,28 @@ return (
 <div className="App">
   <Navbar />
   <div class="login-container justify-align">
-    <form class="container">
+    <form class="container" onSubmit={loginHandler}>
       <h2 class="login-head note-text-color">Login</h2>
       <label for="username" class="input-text note-text-color">Email address</label><br />
-      <input type="text" id="email" name="username" placeholder="abc@gmail.com" value={user.email}
-        class="input-box title-content" onChange={changeHandler} required /><br />
-      <label for="password" class="input-text note-text-color">Password</label><br />
+      <input type="email" id="email" name="username" placeholder="abc@gmail.com" value={user.email}
+        class="input-box login-input-box title-content" onChange={changeHandler} required /><br />
+      <label for="password" class="login--text note-text-color">Password</label><br />
       <input type="password" id="password" name="password" placeholder="**********" value={user.password}
-        class="input-box title-content" onChange={changeHandler}required />
-      <div class="check-pass note-text-color">
+        class="input-box login-input-box title-content" onChange={changeHandler}required />
+      {/* <div class="check-pass note-text-color">
         <label for="checkbox">
           <input type="checkbox" id="checkbox" name="checkbox" /> Remember me</label>
         <button class="btn btn-secondary-login">Forgot your Password?</button>
-      </div>
+      </div> */}
       <div>
         <button class="btn-primary-login btn btn-text long-btn" onClick={guestUserHandler}>Add Guest Credential</button>
       </div>
       <div>
-        <button class="btn-primary-login btn btn-text long-btn" onClick={loginHandler}>Login</button>
+        <button class="btn-primary-login btn btn-text long-btn">Login</button>
       </div>
       <Link to="/signup">
       <div class="new-ac">
-        <button class="btn btn-secondary-login">Create New Account</button>
+        <button type="submit" class="btn btn-secondary-login">Create New Account</button>
       </div>
       </Link>
     </form>

@@ -20,14 +20,18 @@
     padding: var(--container-padding);
 }
 
-
 .input-box {
     width: 100%;
     margin: 0.625rem 0rem;
 }
 
+.login-input-box {
+    width: 20rem;
+    margin: 0.625rem 0rem;
+}
+
 .long-btn {
-    width: 95%;
+    width: 93%;
     margin: 0.75rem;
 }
 

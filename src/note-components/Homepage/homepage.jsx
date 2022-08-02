@@ -27,14 +27,19 @@ currentDate: ""});
 
 const editHandler = (editedNote) => {
 setModal(true);
-setCurrNote(editedNote)
+setCurrNote(editedNote);
+setNewNote(editedNote);
 }
 
 const createNoteFunction = async () => {
 if (token) {
+  if(notes.title !== "" && notes.mainContent !== ""){
 createNote(notes, token, noteDispatch);
 setNote({ title: "", mainContent: "" , bgColor: "" , tags: "", priorityPlace: "", currentDate: ""});
-} else {
+}
+else{
+  toast.error("Please enter title and description");
+}} else {
 navigate("/login");
 }
 };
@@ -82,11 +87,12 @@ toast.error("Note cannot add to archive");
 
 const customStyle = {
 overlay: {
-top: "6rem",
+// top: "6rem",
 backgroundColor: "rgba(52, 58, 64, 0.8)",
 },
 content: {
 width: "18rem",
+height: "25rem",
 margin: "5rem auto",
 backgroundColor: "var(--box-color)",
 },
@@ -102,7 +108,7 @@ return (
       <div className="note-con" style={{backgroundColor: notes.bgColor}}>
         <div className="note-header">
           <input type="text" name="search" placeholder="Title of the note ..." value={notes.title}
-            className="inp-title text-color" onChange={(e)=> setNote(() => ({ ...notes, title: e.target.value }))}/>
+            className="inp-title text-color title-font-size" onChange={(e)=> setNote(() => ({ ...notes, title: e.target.value }))}/>
         </div>
         <textarea type="text" placeholder="Start Writing your note ..." value={notes.mainContent}
           className="note-area text-color"

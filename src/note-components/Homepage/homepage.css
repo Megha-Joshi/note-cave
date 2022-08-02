@@ -92,6 +92,10 @@
     outline: none;
 }
 
+.note-area::placeholder{
+    font-size: 15px;
+}
+
 .new-note-area {
     padding-left: 1rem;
     text-align: start;
@@ -124,14 +128,20 @@
 
 .inp-title {
     background-color: transparent;
-    width: 50%;
+    width: 100%;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     text-decoration: underline;
+    font-size: 1.5rem;
 }
 
 .inp-title:focus {
     outline: none;
+}
+
+.title-font-size::placeholder{
+    font-size: 20px;
+    text-align: center;
 }
 
 .icon-color {

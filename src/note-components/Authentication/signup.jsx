@@ -56,13 +56,13 @@ return (
 <div className="App">
   <Navbar />
   <div class="login-container justify-align">
-    <form class="container">
+    <form class="container" onSubmit={signupHandler}>
       <h2 class="login-head note-text-color">Signup</h2>
       <label for="username" class="input-text note-text-color">Name</label><br />
       <input type="text" id="username" name="username" placeholder="Adarsh Balika" class="input-box title-content"
         onChange={changeHandler} required /><br />
-      <label for="username" class="input-text note-text-color">Email address</label><br />
-      <input type="text" id="username" name="username" placeholder="abc@gmail.com" class="input-box title-content"
+      <label for="email" class="input-text note-text-color">Email address</label><br />
+      <input type="email" id="email" name="email" placeholder="abc@gmail.com" class="input-box title-content"
         onChange={changeHandler} required /><br />
       <label for="password" class="input-text note-text-color">Password</label><br />
       <input type="password" id="password" name="password" placeholder="**********" value={user.password}
@@ -71,7 +71,7 @@ return (
         <input type="checkbox" id="checkbox" name="checkbox" class="checkbox-inp-text" required /> I accept all Terms
         and Conditions</label>
       <div>
-        <button class="btn-primary-login btn btn-text long-btn" onClick={signupHandler}>Create new Account</button>
+        <button type="submit" class="btn-primary-login btn btn-text long-btn">Create new Account</button>
       </div>
       <div class="new-ac">
         <Link to="/login">
