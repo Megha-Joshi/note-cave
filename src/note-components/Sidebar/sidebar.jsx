@@ -25,7 +25,7 @@ return (
             <li className="list left-icon"><span><i class="far fa-home icon-color"></i></span>Home</li>
         </NavLink>
         <NavLink style={currentActiveColor} to="/label" className="list-color">
-            <li className="list left-icon"><span><i class="far fa-tag icon-color"></i></span>Label</li>
+            <li className="list left-icon"><span><i class="far fa-tag icon-color"></i></span>Tags</li>
         </NavLink>
         <NavLink style={currentActiveColor} to="/archive" className="list-color">
             <li className="list left-icon"><span><i class="far fa-archive icon-color"></i></span>Archive</li>

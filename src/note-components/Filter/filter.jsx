@@ -13,7 +13,7 @@ return(
         <button class="btn-secondary-login" onClick={(e)=> filterDispatch({type: "CLEAR_ALL", payload:
             filterState.allNotes})}>CLEAR ALL</button>
     </div>
-    <label className="label-filter label-head">Sort By Label</label>
+    <label className="label-filter label-head">Sort By Tags</label>
     {tagItem.map((tagItem)=> (
     <label class="label-filter">
         <input type="radio" name="tag" value={ tagItem} onClick={(e)=>filterDispatch({type : "TAGS", payload :

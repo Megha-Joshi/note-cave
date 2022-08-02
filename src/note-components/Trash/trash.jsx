@@ -13,7 +13,7 @@ return (
   <div className="main-section">
     <Sidebar />
     <div className="right-section">
-      {trash.length === 0 && <h2 className="page-heading">No trashed note</h2>}
+      {trash.length === 0 ? <h2 className="page-heading">No trashed notes</h2> : <h2 className="page-heading">Trashed notes</h2>}
       {trash.map((notes) =>
       <div className="note-list">
         <div className="note-header">

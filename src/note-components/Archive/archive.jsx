@@ -58,7 +58,7 @@ return (
   <div className="main-section">
     <Sidebar />
     <div className="right-section">
-      {archive.length === 0 && <h2 className="page-heading">No archived note</h2>}
+      {archive.length === 0 ? <h2 className="page-heading">No archived notes</h2> : <h2 className="page-heading">Archived notes</h2>}
       {archive.map((notes) =>
       <div className="note-list">
         <div className="note-header">

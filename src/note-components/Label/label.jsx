@@ -35,7 +35,7 @@ return (
                                     class="fad fa-times-circle"></i></span>
                         </li>)
                         )}
-                        <input placeholder="Press enter to add a label" class="chips-inp" onKeyUp={addTagFunction} />
+                        <input placeholder="Press enter to add a tag" class="chips-inp" onKeyUp={addTagFunction} />
                     </ul>
                 </div>
             </div>
