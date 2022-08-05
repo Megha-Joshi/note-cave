@@ -12,9 +12,9 @@ return (
     </NavLink>
     <div className="nav-icons">
         {theme === "light" ? (
-        <button onClick={()=> setTheme("dark")}><i class="fas fa-moon fa-2x"> </i></button>
+        <button className="icon-no-bg" onClick={()=> setTheme("dark")}><i class="fas fa-moon fa-2x"> </i></button>
         ) : (
-        <button onClick={()=> setTheme("light")}><i class="fad fa-sun fa-2x"></i></button>
+        <button className="icon-no-bg" onClick={()=> setTheme("light")}><i class="fas fa-sun fa-2x"></i></button>
         )}
     </div>
 </nav>

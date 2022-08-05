@@ -2,11 +2,14 @@ import "../../public-css/root.css";
 import "./navbar.css"
 import { useTheme } from "../../Context/theme-context";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useNote } from "../../Context/note-context";
 import { useFilter } from "../../Context/filter-context";
+import { useAuth } from "../../Context/auth-context";
 
 const NavbarResp = () => {
+const navigate = useNavigate();
+const { authDispatch } = useAuth();
 const { theme, setTheme } = useTheme();
 const [sidebar, setSidebar ] = useState(false);
 const [filter, setFilter] = useState(false);

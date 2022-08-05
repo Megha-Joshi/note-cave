@@ -12,10 +12,11 @@ textDecoration: isActive ? "underline" : "none"
 })
 
 const logoutHandler = () => {
-navigate("/")
+// navigate("/")
 localStorage.removeItem("token");
 localStorage.removeItem("user");
 authDispatch({ type: "LOGOUT" });
+navigate("/")
 }
 
 return (

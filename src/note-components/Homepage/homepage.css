@@ -51,6 +51,7 @@
     text-align: start;
     font-weight: 500;
     box-shadow: 0 2px 5px #333;
+    padding-right: 15px;
 }
 
 .note-con {
@@ -77,7 +78,7 @@
     display: flex;
     justify-content: space-between;
     width: 90%;
-    margin: 1.25rem 1.25rem 1.25rem 0.5rem;
+    margin: 1.25rem 1.25rem 1.25rem 0rem;
     gap: 1.25rem;
 }
 
@@ -141,7 +142,6 @@
 
 .title-font-size::placeholder{
     font-size: 20px;
-    text-align: center;
 }
 
 .icon-color {
