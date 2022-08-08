@@ -27,7 +27,7 @@ return (
         <div className="right-section">
             <div class="chips-container">
                 <div class="container-one">
-                    <p class="chips-content note-text-color">Label</p>
+                    <p class="chips-content note-text-color">Add a new tag</p>
                     <ul class="chips-list">
                         {tagItem.map((item,index) => (
                         <li class="chips-item">{item}

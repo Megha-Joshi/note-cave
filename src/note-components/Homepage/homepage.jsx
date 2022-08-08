@@ -128,18 +128,21 @@ return (
             )}
           </select>
           <div className="footer-icons">
-            <button onClick={createNoteFunction} className="icon-no-bg"><i class="far fa-plus"></i></button>
+            <button onClick={createNoteFunction} className="icon-no-bg"><i class="far fa-plus plus-icon"></i></button>
             <input type="color" id="inp-color" value={notes.bgColor} onChange={(e)=> setNote(()=> ({...notes, bgColor:
             e.target.value}))}/>
           </div>
         </div>
       </div>
 
-      {finalFilter(note, filterState).map((notes) =>
+      {finalFilter(note, filterState).length === 0 ? ( <h1 className="no-note-content">No notes available</h1> ) :
+      
+      finalFilter(note, filterState).map((notes) =>
       <div className="note-list" style={{backgroundColor: notes.bgColor}}>
         <div className="note-header">
           <h2 className="inp-title color">{notes.title}</h2>
         </div>
+        <hr></hr>
         <p className="new-note-area note-area color">{notes.mainContent}</p>
         <div className="note-tag">
           {notes.tags.length>0 ? <button className="color tag-btn">{notes.tags}</button>:
@@ -152,10 +155,10 @@ return (
         <span className="color"><small className="small-text">{notes.currentDate}</small></span>
         <div className="note-footer">
           <div className="footer-icons">
-            <button className="icon-no-bg" onClick={()=> editHandler(notes)}><i class="fad fa-edit color"></i></button>
+            <button className="icon-no-bg" onClick={()=> editHandler(notes)}><i class="fad fa-edit color note-icons"></i></button>
             <button onClick={()=> addToArchive(notes)}className="icon-no-bg"><i
-                class="fad fa-inbox-in color"></i></button>
-            <button onClick={()=> addToTrash(notes)} className="icon-no-bg"><i class="far fa-trash color"></i></button>
+                class="fad fa-inbox-in color note-icons"></i></button>
+            <button onClick={()=> addToTrash(notes)} className="icon-no-bg"><i class="far fa-trash color note-icons"></i></button>
           </div>
         </div>
       </div>

@@ -16,13 +16,13 @@ return(
     <label className="label-filter label-head">Sort By Tags</label>
     {tagItem.map((tagItem)=> (
     <label class="label-filter">
-        <input type="radio" name="tag" value={ tagItem} onClick={(e)=>filterDispatch({type : "TAGS", payload :
+        <input type="radio" name="tag" value={ tagItem} checked={filterState.sortByLabel=== tagItem} onClick={(e)=>filterDispatch({type : "TAGS", payload :
         e.target.value})}/> {tagItem} </label>
     ))}
     <label className="label-filter label-head">Sort By Priority</label>
     {priority.map((priorityName)=> (
     <label class="label-filter">
-        <input type="radio" name="priority" value={ priorityName} className="inp-filter"
+        <input type="radio" name="priority" value={ priorityName} className="inp-filter" checked={filterState.sortByPriority=== priorityName}
             onClick={(e)=>filterDispatch({type :
         "PRIORITY", payload : e.target.value})}/> {priorityName} </label>
 
