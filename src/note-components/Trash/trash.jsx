@@ -32,7 +32,7 @@ return (
         <div className="note-footer">
           <div className="footer-icons">
             <button className="icon-no-bg" onClick={(e)=> noteDispatch({type:"DELETE_FROM_TRASH", payload:
-              notes._id})}><i class="far fa-trash color"></i></button>
+              notes._id})}><i class="far fa-trash color note-icons"></i></button>
           </div>
         </div>
       </div>

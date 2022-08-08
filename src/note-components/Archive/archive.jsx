@@ -77,9 +77,9 @@ return (
         <div className="note-footer">
           <div className="footer-icons">
             <button onClick={()=> restoreFromArchive(notes)} className="icon-no-bg"><i
-                class="fad fa-inbox-out color"></i></button>
+                class="fad fa-inbox-out color note-icons"></i></button>
             <button onClick={()=> addToTrashFromArchive(notes)} className="icon-no-bg"><i
-                class="far fa-trash color"></i></button>
+                class="far fa-trash color note-icons"></i></button>
           </div>
         </div>
       </div>
