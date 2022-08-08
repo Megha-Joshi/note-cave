@@ -196,7 +196,7 @@ return (
             </select>
           </div>
           <button className="btn btn-primary-login btn-text" onClick={()=> editNote(token, currNote, newNote,
-            noteDispatch)}>EDIT Task</button>
+            noteDispatch, setModal)}>EDIT Task</button>
         </main>
       </Modal>
       )

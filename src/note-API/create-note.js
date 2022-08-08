@@ -29,7 +29,7 @@ const createNote = async (note, token, noteDispatch) => {
     }
 };
 
-const editNote = async (token, note, newNote, noteDispatch) => {
+const editNote = async (token, note, newNote, noteDispatch, setModal) => {
     try {
         const resp = await axios.post(
             `/api/notes/${note._id}`, {
@@ -47,6 +47,7 @@ const editNote = async (token, note, newNote, noteDispatch) => {
                 payload: resp.data.notes
             });
             toast.success("Note edited !");
+            setModal(false);
         }
     } catch (error) {
         console.log(error);
